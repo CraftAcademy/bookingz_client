@@ -1,0 +1,15 @@
+<ion-nav-view>
+  <ion-view view-title="My Page">
+    <ion-content class = "dashboard-background">
+      <h2 class="white">{{date | date:'yyyy-MM-dd'}}</h2>
+
+      <div class="details">
+        <h1 class="white client">{{meeting.client}}</h1>
+        <h3 class="white time">Mötet startar: {{meeting.time_start}}</h3>
+        <h3 class="white time">Lunch: {{meeting.lunch}}</h3>
+        <h3 class="white time">Mötet slutar: {{meeting.time_end}}</h3>
+      </div>
+
+    </ion-content>
+  </ion-view>
+</ion-nav-view>
