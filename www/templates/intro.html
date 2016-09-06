@@ -2,13 +2,14 @@
   <ion-view view-title="My Page">
     <ion-content class = "dashboard-background">
       <h2 class="white">{{date | date:'EEEE yyyy-MM-dd'}} - {{resource.designation}}</h2>
-      <h2 class="white"></h2>
-
-      <div class="details">
+      <div class="details" ng-if="state == 'booked'" >
         <h1 class="white client">{{meeting.client}}</h1>
         <h3 class="white time">Mötet startar: {{meeting.time_start}}</h3>
         <h3 class="white time">Lunch: {{meeting.lunch}}</h3>
         <h3 class="white time">Mötet slutar: {{meeting.time_end}}</h3>
+      </div>
+      <div class="details" ng-if="state == 'free'">
+        <h1 class="white client">No booking...</h1>
       </div>
 
     </ion-content>
