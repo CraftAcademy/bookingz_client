@@ -16,11 +16,10 @@ angular.module('bookingz.controllers', [])
 
   $scope.allBookings = function(){
     bookingzService.query(function (data){
+      $scope.resource = data;
       console.log(data);
     })
-  }
+  };
 
-  console.log(document.body.classList.contains('platform-browser'));
-  console.log(document.body.classList);
 
 });

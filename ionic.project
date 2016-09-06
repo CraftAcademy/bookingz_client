@@ -4,9 +4,9 @@
     "email": "",
     "app_id": "",
     "proxies": [
-      {
-        "path": "/api",
-        "proxyUrl": "https://bookingz.herokuapp.com"
-      }
-    ]
+       {
+         "path": "/api",
+         "proxyUrl": "https://bookingz.herokuapp.com"
+       }
+     ]
 }

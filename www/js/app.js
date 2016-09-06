@@ -10,6 +10,8 @@ angular.module('bookingz',
     'bookingz.services',
     'ngResource'])
 
+  .constant('API_URL', 'http://localhost:3000')
+  //.constant('API_URL', 'https://bookings.herokuapp.com/')
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
       if (window.cordova && window.cordova.plugins.Keyboard) {

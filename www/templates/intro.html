@@ -1,7 +1,8 @@
 <ion-nav-view>
   <ion-view view-title="My Page">
     <ion-content class = "dashboard-background">
-      <h2 class="white">{{date | date:'yyyy-MM-dd'}}</h2>
+      <h2 class="white">{{date | date:'EEEE yyyy-MM-dd'}} - {{resource.designation}}</h2>
+      <h2 class="white"></h2>
 
       <div class="details">
         <h1 class="white client">{{meeting.client}}</h1>
