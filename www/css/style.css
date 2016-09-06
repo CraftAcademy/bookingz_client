@@ -1,1 +1,25 @@
 /* Empty. Add your own CSS if you like */
+.dashboard-background {
+  background-color: #e0157e;
+  padding: 1em 1em 1em 1em;
+
+}
+
+
+.white {
+  color: white;
+}
+
+.client {
+  font-size: 7.5rem;
+}
+
+.details {
+  margin-top: 10rem;
+  margin-left: 11rem;
+}
+
+
+.time {
+  padding-left: 0.3rem;
+}
