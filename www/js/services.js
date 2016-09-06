@@ -9,6 +9,11 @@ angular.module('bookingz.services', [])
         query: {
           method: 'GET',
           headers: headers
+        },
+
+        get: {
+          method: 'GET',
+          headers: headers
         }
       })
 

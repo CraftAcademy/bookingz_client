@@ -8,7 +8,8 @@ angular.module('bookingz',
     'ngCordova',
     'bookingz.controllers',
     'bookingz.services',
-    'ngResource'])
+    'ngResource',
+    'emguo.poller'])
 
   .constant('API_URL', 'http://localhost:3000')
   //.constant('API_URL', 'https://bookings.herokuapp.com/')
