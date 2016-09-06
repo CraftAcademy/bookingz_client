@@ -1,6 +1,10 @@
 angular.module('bookingz.controllers', [])
 
-.controller('DisplayController', function ($scope){
+.controller('DisplayController', function ($scope, bookingzService){
+
+  $scope.$on('$ionicView.enter', function() {
+    $scope.allBookings();
+  });
 
   $scope.date = Date.now();
   $scope.meeting = {
@@ -9,5 +13,14 @@ angular.module('bookingz.controllers', [])
     time_end: '15:00',
     lunch: '12:00 - 13:00'
   };
+
+  $scope.allBookings = function(){
+    bookingzService.query(function (data){
+      console.log(data);
+    })
+  }
+
+  console.log(document.body.classList.contains('platform-browser'));
+  console.log(document.body.classList);
 
 });
