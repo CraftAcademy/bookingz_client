@@ -6,7 +6,7 @@ exports.config = {
   },
   baseUrl: 'http://localhost:8100',
   specs: [
-    'features/**/*.feature.js'
+    '**/*.feature.js'
   ],
 
   jasmineNodeOpts: {
