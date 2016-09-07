@@ -6,7 +6,8 @@
     "angular-resource": "^1.5.8"
   },
   "dependencies": {
-    "angular-poller": "^0.4.5"
+    "angular-poller": "^0.4.5",
+    "ngCordova": "^0.1.27-alpha"
   },
   "resolutions": {
     "angular": "1.5.8"
