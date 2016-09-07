@@ -1,12 +1,11 @@
 {
-
   "name": "bookingz_client",
-    "email": "",
-    "app_id": "",
-    "proxies": [
-       {
-         "path": "/api",
-         "proxyUrl": "https://bookingz.herokuapp.com"
-       }
-     ]
+  "email": "",
+  "app_id": "4ef980e0",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "https://bookingz.herokuapp.com"
+    }
+  ]
 }

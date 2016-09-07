@@ -11,8 +11,8 @@ angular.module('bookingz',
     'ngResource',
     'emguo.poller'])
 
-  .constant('API_URL', 'http://localhost:3000')
-  //.constant('API_URL', 'https://bookings.herokuapp.com/')
+  //.constant('API_URL', 'http://localhost:3000')
+  .constant('API_URL', 'https://bookingz.herokuapp.com')
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
       if (window.cordova && window.cordova.plugins.Keyboard) {

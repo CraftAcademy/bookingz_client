@@ -4,7 +4,7 @@ angular.module('bookingz.services', [])
     // Note: The uuid need to be hardcoded for each individual resource.
     var headers = {'Accept': 'application/json'};
     return $resource(API_URL + '/api/resources/:uuid',
-      {uuid: "7a04dfc0-3819-4cd3-bbc0-14698552652a"},
+      {uuid: "55575ef4-6c10-44df-88d0-2097f99653b8"},
       {
         query: {
           method: 'GET',
