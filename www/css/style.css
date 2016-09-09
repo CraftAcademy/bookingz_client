@@ -1,11 +1,15 @@
 /* Empty. Add your own CSS if you like */
-.dashboard-background {
-  background-color: #e0157e;
+.dashboard{
   padding: 1em 1em 1em 1em;
-
 }
 
+.booked{
+  background-color: #e0157e;
+}
 
+.free{
+  background-color: darkgreen;
+}
 .white {
   color: white;
 }
