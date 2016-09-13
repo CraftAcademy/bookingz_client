@@ -1,0 +1,34 @@
+<ion-nav-view>
+  <ion-view view-title="My Page">
+    <ion-content>
+      <h2 class="grey">Room Display Center</h2>
+      <ion-list>
+        <ion-item ng-repeat="resource in resourceIndex"
+                  style="line-height: 2em;background: linear-gradient(#eeeeee, #e3e3e3);">
+
+          <div class="row">
+            <div class="col col-30">
+              <h3>{{resource.designation}}</h3>
+              <h2>{{currentSlotInfo(resource)}}</h2>
+            </div>
+            <div class="col col-50 float" ng-if="currentSlotInfo(resource).client">
+              <h2>
+                {{currentSlotInfo(resource).client}}</h2><br>
+              <h3>
+                {{currentSlotInfo(resource).booking_time}}
+              </h3>
+            </div>
+            <div class="col col-70" ng-if="!currentSlotInfo(resource).client">
+              <h2 class="grey">No booking</h2>
+            </div>
+          </div>
+
+          </div>
+
+
+        </ion-item>
+      </ion-list>
+
+    </ion-content>
+  </ion-view>
+</ion-nav-view>
