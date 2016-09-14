@@ -1,15 +1,16 @@
 /* Empty. Add your own CSS if you like */
-.dashboard{
+.dashboard {
   padding: 1em 1em 1em 1em;
 }
 
-.booked{
+.booked {
   background-color: #e0157e;
 }
 
-.free{
+.free {
   background-color: darkgreen;
 }
+
 .white {
   color: white;
 }
@@ -23,12 +24,33 @@
   margin-left: 11rem;
 }
 
-
 .time {
   padding-left: 0.3rem;
 }
 
+h1, h2, h3 .shadow{
+  text-shadow: 0px 1px 1px #520127;
+}
 
-h1, h2, h3 {
-  text-shadow: 0px 1px 2px #520127;
+h1, h2, h3 .grey {
+  color: dimgrey;
+  text-shadow: 0 0 0 !important;
+}
+
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.center {
+  margin-top: -2.5em;
+  padding-bottom: 0.5em;
+  text-align: center;
+}
+
+.float {
 }

@@ -37,6 +37,12 @@ angular.module('bookingz',
         url: '/display',
         templateUrl: 'templates/intro.html',
         controller: 'DisplayController'
+      })
+
+      .state('info-board', {
+        url: '/info-board',
+        templateUrl: 'templates/info-board.html',
+        controller: 'IndexController'
       });
 // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/display');
