@@ -35,7 +35,6 @@ angular.module('bookingz.services', [])
       return $localStorage.myAppData;
     };
     var _add = function (setting) {
-      debugger;
       $localStorage.myAppData = {};
       $localStorage.myAppData = setting;
     };
