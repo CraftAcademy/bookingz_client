@@ -3,7 +3,7 @@ angular.module('bookingz.services', [])
   .factory('bookingzService', function ($resource, API_URL) {
     // Note: The uuid need to be hardcoded for each individual resource.
     var headers = {'Accept': 'application/json'};
-    return $resource(API_URL + '/api/resources/:uuid', {},
+    return $resource(API_URL + '/api/resources', {},
       {
         query: {
           method: 'GET',
@@ -22,7 +22,7 @@ angular.module('bookingz.services', [])
         },
         post: {
           method: 'POST',
-          headers: headers
+          headers: {'Accept': 'application/json', 'Content-Type':'application/json; charset=UTF-8'}
         }
       })
 

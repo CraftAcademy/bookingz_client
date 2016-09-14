@@ -1,12 +1,14 @@
 angular.module('bookingz.controllers', [])
 
-  .controller('DisplayController', function ($scope, bookingzService, poller) {
-    var poller = poller.get(bookingzService, {uuid: "55575ef4-6c10-44df-88d0-2097f99653b8"},
+  .controller('DisplayController', function ($scope, bookingzService, poller, $localStorage) {
+    console.log('First log' + getStoredUuid())
+    var poller = poller.get(bookingzService, {uuid: getStoredUuid()},
       {
         delay: 20000,
         smart: true
       }
     );
+
 
     $scope.$on('$ionicView.enter', function () {
       $scope.allBookings();
@@ -19,11 +21,18 @@ angular.module('bookingz.controllers', [])
     $scope.date = Date.now();
 
     $scope.allBookings = function () {
-      bookingzService.get({uuid: "55575ef4-6c10-44df-88d0-2097f99653b8"}, function (data) {
+      bookingzService.query({uuid: getStoredUuid()}, function (data) {
         $scope.resource = data;
         getSlotInfo(data);
       })
     };
+
+    function getStoredUuid(){
+      var uuid = $localStorage.myAppData.uuid;
+      $scope.uuid = uuid;
+      console.log(uuid);
+      return uuid;
+    }
 
     function getSlotInfo(data) {
       var date = new Date();
@@ -68,7 +77,7 @@ angular.module('bookingz.controllers', [])
       })
     };
 
-    $scope.currentSlotInfo = function(resource){
+    $scope.currentSlotInfo = function (resource) {
       var message, date, data;
       date = new Date();
       data = resource;
@@ -89,16 +98,21 @@ angular.module('bookingz.controllers', [])
 
 
   })
-  .controller('setupController', function ($scope, storageService, $localStorage, $state, bookingzService) {
-    $scope.data =  {};
+  .controller('setupController', function ($scope, $rootScope, storageService, $localStorage, $state, bookingzService) {
+    $scope.data = {};
     console.log($scope.data);
     $scope.setSettings = function () {
       $localStorage.myAppRun = true;
       // get the devise UUID
 
       // hit the api post route
-      console.log($scope.data.designation);
+      bookingzService.post({resource:{
+        uuid: '123e4567-e89b-12d3-a452-426655440025',
+        designation: $scope.data.designation,
+        capacity: 20
+      }});
 
+      $localStorage.myAppData = {uuid: '123e4567-e89b-12d3-a452-426655440025'};
       $state.go('display', null, {reload: true});
     };
 
