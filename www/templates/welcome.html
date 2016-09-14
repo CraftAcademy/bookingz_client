@@ -2,13 +2,15 @@
   <ion-view view-title="Welcome">
     <ion-content>
       <h3 class="grey">Set up panel</h3>
-      <div class="list">
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Designation</span>
-          <input type="text" placeholder="Room name">
-        </label>
-        <button class="button button-block button-positive" ng-click="setSettings()">Save</button>
-      </div>
+      <form ng-submit="setSettings()">
+        <div class="list">
+          <label class="item item-input item-stacked-label">
+            <span class="input-label">Designation</span>
+            <input type="text" placeholder="Room name" name="username" ng-model="data.designation">
+          </label>
+          <input class="button button-block button-positive" type="submit" name="submit" value="Submit to server">
+        </div>
+      </form>
 
     </ion-content>
   </ion-view>

@@ -90,12 +90,14 @@ angular.module('bookingz.controllers', [])
 
   })
   .controller('setupController', function ($scope, storageService, $localStorage, $state, bookingzService) {
-
+    $scope.data =  {};
+    console.log($scope.data);
     $scope.setSettings = function () {
       $localStorage.myAppRun = true;
       // get the devise UUID
 
       // hit the api post route
+      console.log($scope.data.designation);
 
       $state.go('display', null, {reload: true});
     };

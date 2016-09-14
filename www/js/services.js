@@ -17,10 +17,13 @@ angular.module('bookingz.services', [])
 
         index: {
           method: 'GET',
-          //isArray: true,
           headers: headers
 
         },
+        post: {
+          method: 'POST',
+          headers: headers
+        }
       })
 
   })
