@@ -1,9 +1,15 @@
 <ion-nav-view>
   <ion-view view-title="Welcome">
     <ion-content>
-      Tjo hoo!
-      <button class="button" ng-click="setSetting()">Set me!</button>
-      <button class="button" ng-click="removeSetting()">Remove me!</button>
+      <h3 class="grey">Set up panel</h3>
+      <div class="list">
+        <label class="item item-input item-stacked-label">
+          <span class="input-label">Designation</span>
+          <input type="text" placeholder="Room name">
+        </label>
+        <button class="button button-block button-positive" ng-click="setSettings()">Save</button>
+      </div>
+
     </ion-content>
   </ion-view>
 </ion-nav-view>
