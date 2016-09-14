@@ -10,7 +10,8 @@ angular.module('bookingz',
     'bookingz.services',
     'ngResource',
     'emguo.poller',
-    'ionic.wizard'])
+    'ionic.wizard',
+    'ngStorage'])
 
   //.constant('API_URL', 'http://localhost:3000')
   .constant('API_URL', 'https://bookingz.herokuapp.com')

@@ -8,7 +8,8 @@
   "dependencies": {
     "angular-poller": "^0.4.5",
     "ngCordova": "^0.1.27-alpha",
-    "ionic-wizard": "^2.0.1"
+    "ionic-wizard": "^2.0.1",
+    "ngstorage": "^0.3.11"
   },
   "resolutions": {
     "angular": "1.5.8"

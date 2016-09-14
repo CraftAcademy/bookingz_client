@@ -1,6 +1,6 @@
 angular.module('bookingz.controllers', [])
 
-  .controller('DisplayController', function ($scope, bookingzService, poller) {
+  .controller('DisplayController', function ($scope, bookingzService, poller, storageService) {
     var poller = poller.get(bookingzService,
       {
         delay: 20000,
@@ -58,5 +58,12 @@ angular.module('bookingz.controllers', [])
       return status;
     }
 
+    //$scope.things = storageService.getAll();
+    //$scope.add = function (newThing) {
+    //  storageService.add(newThing);
+    //};
+    //$scope.remove = function (thing) {
+    //  storageService.remove(thing);
+    //};
 
   });
