@@ -34,6 +34,19 @@ angular.module('bookingz',
   })
 
   .config(function ($stateProvider, $urlRouterProvider) {
+
+    console.log(localStorage.getItem('ngStorage-myAppRun'));
+    // set default route to wizard
+    var defaultRoute = '/welcome';
+    //localStorage.myAppRun = false;
+
+    // check whether wizard has been run in order to change default route
+    // we cannot inject ngStorage dependency in a config module, so we need to use plain localStorage object
+    if (localStorage.getItem('ngStorage-myAppRun') == 'true') {
+      console.log('wizard has been run - skip!');
+      defaultRoute = '/display';
+    }
+
     $stateProvider
       .state('display', {
         url: '/display',
@@ -46,5 +59,5 @@ angular.module('bookingz',
         controller: 'setupController'
       });
 // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/display');
+    $urlRouterProvider.otherwise(defaultRoute);
   });

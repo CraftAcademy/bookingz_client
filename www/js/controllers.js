@@ -1,6 +1,6 @@
 angular.module('bookingz.controllers', [])
 
-  .controller('DisplayController', function ($scope, bookingzService, poller, storageService) {
+  .controller('DisplayController', function ($scope, bookingzService, poller) {
     var poller = poller.get(bookingzService,
       {
         delay: 20000,
@@ -58,15 +58,17 @@ angular.module('bookingz.controllers', [])
       return status;
     }
 
-    //$scope.things = storageService.getAll();
-    //$scope.add = function (newThing) {
-    //  storageService.add(newThing);
-    //};
-    //$scope.remove = function (thing) {
-    //  storageService.remove(thing);
-    //};
 
   })
-  .controller('setupController', function($scope){
+  .controller('setupController', function ($scope, storageService, $localStorage, $state) {
 
+    $scope.setSettings = function () {
+      $localStorage.myAppRun = true;
+      $state.go('display', null, {reload: true});
+    };
+
+    $scope.removeSettings = function () {
+      $localStorage.myAppRun = false;
+      $state.go('welcome', null, {reload: true});
+    };
   });

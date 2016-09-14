@@ -20,16 +20,16 @@ angular.module('bookingz.services', [])
   })
   .factory('storageService', function ($localStorage){
     $localStorage = $localStorage.$default({
-      things: []
+      myAppData: []
     });
     var _getAll = function () {
-      return $localStorage.things;
+      return $localStorage.myAppData;
     };
-    var _add = function (thing) {
-      $localStorage.things.push(thing);
+    var _add = function (setting) {
+      $localStorage.myAppData.push(setting);
     };
-    var _remove = function (thing) {
-      $localStorage.things.splice($localStorage.things.indexOf(thing), 1);
+    var _remove = function (setting) {
+      $localStorage.myAppData.splice($localStorage.settings.indexOf(setting), 1);
     };
     return {
       getAll: _getAll,
