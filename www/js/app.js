@@ -53,6 +53,12 @@ angular.module('bookingz',
         templateUrl: 'templates/intro.html',
         controller: 'DisplayController'
       })
+
+      .state('info-board', {
+        url: '/info-board',
+        templateUrl: 'templates/info-board.html',
+        controller: 'IndexController'
+      })
       .state('welcome', {
         url: '/welcome',
         templateUrl: 'templates/welcome.html',
