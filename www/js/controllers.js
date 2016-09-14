@@ -66,4 +66,7 @@ angular.module('bookingz.controllers', [])
     //  storageService.remove(thing);
     //};
 
+  })
+  .controller('setupController', function($scope){
+
   });
