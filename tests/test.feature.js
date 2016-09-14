@@ -5,7 +5,7 @@ describe('Open app', function () {
   });
 
   it('should be on /display path', function () {
-    expect(browser.getLocationAbsUrl()).toMatch('/display');
+    expect(browser.getLocationAbsUrl()).toMatch('/welcome');
     //expect(browser.getTitle()).toEqual('Starter');
   });
 
