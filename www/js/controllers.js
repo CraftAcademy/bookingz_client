@@ -1,6 +1,7 @@
 angular.module('bookingz.controllers', [])
 
   .controller('DisplayController', function ($scope, bookingzService, poller, $localStorage) {
+
     console.log('First log' + getStoredUuid())
     var poller = poller.get(bookingzService, {uuid: getStoredUuid()},
       {
@@ -8,7 +9,6 @@ angular.module('bookingz.controllers', [])
         smart: true
       }
     );
-
 
     $scope.$on('$ionicView.enter', function () {
       $scope.allBookings();
