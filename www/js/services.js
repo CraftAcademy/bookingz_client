@@ -35,15 +35,14 @@ angular.module('bookingz.services', [])
       return $localStorage.myAppData;
     };
     var _add = function (setting) {
-      $localStorage.myAppData.push(setting);
+      debugger;
+      $localStorage.myAppData = {};
+      $localStorage.myAppData = setting;
     };
-    var _remove = function (setting) {
-      $localStorage.myAppData.splice($localStorage.settings.indexOf(setting), 1);
-    };
+
     return {
       getAll: _getAll,
-      add: _add,
-      remove: _remove
+      add: _add
     };
   });
 

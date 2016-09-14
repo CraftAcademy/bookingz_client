@@ -35,7 +35,7 @@ angular.module('bookingz',
 
   .config(function ($stateProvider, $urlRouterProvider) {
 
-    console.log(localStorage.getItem('ngStorage-myAppRun'));
+    //console.log(localStorage.getItem('ngStorage-myAppRun'));
     // set default route to wizard
     var defaultRoute = '/welcome';
 
@@ -43,7 +43,7 @@ angular.module('bookingz',
     // check whether wizard has been run in order to change default route
     // we cannot inject ngStorage dependency in a config module, so we need to use plain localStorage object
     if (localStorage.getItem('ngStorage-myAppRun') == 'true') {
-      console.log('wizard has been run - skip!');
+      // Setup view has been run
       defaultRoute = '/display';
     }
 

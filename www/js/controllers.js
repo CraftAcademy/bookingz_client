@@ -4,7 +4,8 @@ angular.module('bookingz.controllers', [])
                                              $ionicPlatform,
                                              bookingzService,
                                              poller,
-                                             $localStorage) {
+                                             $localStorage,
+                                             storageService) {
 
     $ionicPlatform.ready(function () {
       $scope.date = Date.now();
@@ -14,7 +15,6 @@ angular.module('bookingz.controllers', [])
         getSlotInfo(data);
       })
     });
-
 
     var poller = poller.get(bookingzService,
       {
@@ -42,9 +42,8 @@ angular.module('bookingz.controllers', [])
     };
 
     function getStoredUuid() {
-      var uuid = $localStorage.myAppData.uuid;
-      $scope.uuid = uuid;
-      console.log(uuid);
+      //var uuid = $localStorage.myAppData.uuid;
+      var uuid = storageService.getAll(uuid).uuid;
       return uuid;
     }
 
@@ -111,29 +110,49 @@ angular.module('bookingz.controllers', [])
 
 
   })
-  .controller('setupController', function ($scope, $rootScope, storageService, $localStorage, $state, bookingzService) {
+  .controller('setupController', function ($scope,
+                                           storageService,
+                                           $localStorage,
+                                           $state,
+                                           bookingzService) {
     $scope.data = {};
-    console.log($scope.data);
     $scope.setSettings = function () {
-      $localStorage.myAppRun = true;
-      // get the devise UUID
-
+      // get the devise UUID but on ionic serve we need to
+      // fake one by generating it.
+      var uuid = generateUUID();
       // hit the api post route
       bookingzService.post({
-        resource: {
-          // Will use the uuid we get from the device
-          uuid: '123e4567-e89b-12d3-a452-426655440025',
-          designation: $scope.data.designation,
-          capacity: 20
+          resource: {
+            // Will use the uuid we get from the device
+            uuid: uuid,
+            designation: $scope.data.designation,
+            capacity: 20
+          }
+        }, function () {
+          $localStorage.myAppRun = true;
+          storageService.add({uuid: uuid});
+          $state.go('display')
         }
-      });
+      );
 
-      $localStorage.myAppData = {uuid: '123e4567-e89b-12d3-a452-426655440025'};
-      $state.go('display', null, {reload: true});
     };
 
     $scope.removeSettings = function () {
       $localStorage.myAppRun = false;
       $state.go('welcome', null, {reload: true});
     };
+
+    function generateUUID() {
+
+      var d = new Date().getTime();
+      if (window.performance && typeof window.performance.now === "function") {
+        d += performance.now();
+      }
+      var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        var r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+      });
+      return uuid;
+    }
   });
