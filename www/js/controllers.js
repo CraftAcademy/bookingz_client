@@ -12,6 +12,7 @@ angular.module('bookingz.controllers', [])
       $scope.uuid = getStoredUuid();
       bookingzService.query({uuid: $scope.uuid}, function (data) {
         $scope.resource = data;
+        console.log('1 getting data');
         getSlotInfo(data);
       })
     });
@@ -25,6 +26,7 @@ angular.module('bookingz.controllers', [])
 
     $scope.$on('$ionicView.enter', function () {
       poller.promise.then(null, null, function (response) {
+        console.log('2 polling data');
         response.items.filter(function (resource) {
           if (resource.designation == $scope.resource.designation) {
             $scope.resource = resource;
@@ -43,6 +45,7 @@ angular.module('bookingz.controllers', [])
 
     function getStoredUuid() {
       //var uuid = $localStorage.myAppData.uuid;
+      console.log('0 getting stored uuid');
       var uuid = storageService.getAll(uuid).uuid;
       return uuid;
     }

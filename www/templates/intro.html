@@ -1,8 +1,8 @@
 <ion-nav-view>
   <ion-view view-title="My Page">
-    <ion-content ng-class="state == 'booked' ? 'booked' : 'free'" class="dashboard" >
+    <ion-content ng-class="state == 'booked' ? 'booked' : 'free'" class="dashboard">
       <h2 class="white">{{date | date:'EEEE yyyy-MM-dd'}} - {{resource.designation}}</h2>
-      <div class="details" ng-if="state == 'booked'" >
+      <div class="details" ng-if="state == 'booked'">
         <h1 class="white client">{{meeting.client}}</h1>
         <h3 class="white time">Mötet startar: {{meeting.booking_time.split(' - ')[0]}}</h3>
         <h3 class="white time">Mötet slutar: {{meeting.booking_time.split(' - ')[1]}}</h3>
@@ -10,9 +10,13 @@
       <div class="details" ng-if="state != 'booked'">
         <h1 class="white client">No booking...</h1>
       </div>
-      <button class="button" ng-controller="setupController" ng-click="removeSettings()">Remove me!</button>
 
 
     </ion-content>
+    <ion-footer-bar align-title="left" class="bar-assertive">
+      <div class="buttons">
+        <button style="background: transparent;color : #111;" class="button ion-gear-b" ng-controller="setupController" ng-click="removeSettings()"></button>
+      </div>
+    </ion-footer-bar>
   </ion-view>
 </ion-nav-view>
