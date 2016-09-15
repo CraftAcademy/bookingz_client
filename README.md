@@ -1,7 +1,7 @@
 # Bookingz Client
 The mobile part of the [Bookingz](https://github.com/CraftAcademy/bookingz) project.
 An Android application that displays who has booked the conference room and the time.
-The Android tablet is to be placed outside the room.
+The tablet running the app is to be placed outside the room
 
 ## Getting Started
 
@@ -45,9 +45,9 @@ For more information check out [Ionic](http://ionicframework.com/docs/guide/test
 
 ## Built With
 
-* Ionic v1
+* Ionic v1.7.16
 * JavaScript
-* Angular 1
+* Angular 1.5.3
 * Cordova
 * Cordova-Device
 * ngStorage
