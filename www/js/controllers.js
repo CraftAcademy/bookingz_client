@@ -14,7 +14,7 @@ angular.module('bookingz.controllers', [])
         $scope.resource = data;
         console.log('1 getting data');
         getSlotInfo(data);
-      })
+      });
     });
 
     var poller = poller.get(bookingzService,
