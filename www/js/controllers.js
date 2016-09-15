@@ -117,16 +117,22 @@ angular.module('bookingz.controllers', [])
                                            storageService,
                                            $localStorage,
                                            $state,
-                                           bookingzService) {
+                                           bookingzService,
+                                           $cordovaDevice) {
     $scope.data = {};
     $scope.setSettings = function () {
       // get the devise UUID but on ionic serve we need to
       // fake one by generating it.
-      var uuid = generateUUID();
-      // hit the api post route
+      var uuid;
+      try {
+        uuid = $cordovaDevice.getUUID();
+      }
+      catch (err) {
+        uuid = generateUUID();
+      }
+
       bookingzService.post({
           resource: {
-            // Will use the uuid we get from the device
             uuid: uuid,
             designation: $scope.data.designation,
             capacity: 20
