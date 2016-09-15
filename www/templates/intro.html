@@ -13,7 +13,7 @@
 
 
     </ion-content>
-    <ion-footer-bar align-title="left" style="background-color: green; ">
+    <ion-footer-bar ng-if="!ionic.Platform.isWebView()" align-title="left" style="background-color: green; ">
       <div class="buttons">
         <button style="background: transparent;color : #111;  border: transparent" class="button ion-gear-b" ng-controller="setupController" ng-click="removeSettings()"></button>
       </div>
