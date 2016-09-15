@@ -17,10 +17,32 @@ angular.module('bookingz.services', [])
 
         index: {
           method: 'GET',
-          //isArray: true,
           headers: headers
 
+        },
+        post: {
+          method: 'POST',
+          headers: {'Accept': 'application/json', 'Content-Type':'application/json; charset=UTF-8'}
         }
       })
 
+  })
+  .factory('storageService', function ($localStorage){
+    $localStorage = $localStorage.$default({
+      myAppData: []
+    });
+    var _getAll = function () {
+      return $localStorage.myAppData;
+    };
+    var _add = function (setting) {
+      $localStorage.myAppData = {};
+      $localStorage.myAppData = setting;
+    };
+
+    return {
+      getAll: _getAll,
+      add: _add
+    };
   });
+
+

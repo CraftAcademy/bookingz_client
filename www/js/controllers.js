@@ -1,7 +1,23 @@
 angular.module('bookingz.controllers', [])
 
-  .controller('DisplayController', function ($scope, bookingzService, poller) {
-    var poller = poller.get(bookingzService, {uuid: "55575ef4-6c10-44df-88d0-2097f99653b8"},
+  .controller('DisplayController', function ($scope,
+                                             $ionicPlatform,
+                                             bookingzService,
+                                             poller,
+                                             $localStorage,
+                                             storageService) {
+
+    $ionicPlatform.ready(function () {
+      $scope.date = Date.now();
+      $scope.uuid = getStoredUuid();
+      bookingzService.query({uuid: $scope.uuid}, function (data) {
+        $scope.resource = data;
+        console.log('1 getting data');
+        getSlotInfo(data);
+      })
+    });
+
+    var poller = poller.get(bookingzService,
       {
         delay: 20000,
         smart: true
@@ -9,21 +25,30 @@ angular.module('bookingz.controllers', [])
     );
 
     $scope.$on('$ionicView.enter', function () {
-      $scope.allBookings();
       poller.promise.then(null, null, function (response) {
-        $scope.resource = response;
-        getSlotInfo(response);
+        console.log('2 polling data');
+        response.items.filter(function (resource) {
+          if (resource.designation == $scope.resource.designation) {
+            $scope.resource = resource;
+          }
+        });
+        getSlotInfo($scope.resource);
       });
     });
 
-    $scope.date = Date.now();
-
     $scope.allBookings = function () {
-      bookingzService.get({uuid: "55575ef4-6c10-44df-88d0-2097f99653b8"}, function (data) {
+      bookingzService.query({uuid: getStoredUuid()}, function (data) {
         $scope.resource = data;
         getSlotInfo(data);
       })
     };
+
+    function getStoredUuid() {
+      //var uuid = $localStorage.myAppData.uuid;
+      console.log('0 getting stored uuid');
+      var uuid = storageService.getAll(uuid).uuid;
+      return uuid;
+    }
 
     function getSlotInfo(data) {
       var date = new Date();
@@ -58,7 +83,6 @@ angular.module('bookingz.controllers', [])
       $scope.allBookings();
       poller.promise.then(null, null, function (response) {
         $scope.resourceIndex = response.items;
-        console.log(response.items);
       });
     });
 
@@ -68,7 +92,7 @@ angular.module('bookingz.controllers', [])
       })
     };
 
-    $scope.currentSlotInfo = function(resource){
+    $scope.currentSlotInfo = function (resource) {
       var message, date, data;
       date = new Date();
       data = resource;
@@ -85,5 +109,59 @@ angular.module('bookingz.controllers', [])
         }
       });
       return message;
+    }
+
+
+  })
+  .controller('setupController', function ($scope,
+                                           storageService,
+                                           $localStorage,
+                                           $state,
+                                           bookingzService,
+                                           $cordovaDevice) {
+    $scope.data = {};
+    $scope.setSettings = function () {
+      // get the devise UUID but on ionic serve we need to
+      // fake one by generating it.
+      var uuid;
+      try {
+        uuid = $cordovaDevice.getUUID();
+      }
+      catch (err) {
+        uuid = generateUUID();
+      }
+
+      bookingzService.post({
+          resource: {
+            uuid: uuid,
+            designation: $scope.data.designation,
+            capacity: 20
+          }
+        }, function () {
+          $localStorage.myAppRun = true;
+          storageService.add({uuid: uuid});
+          $state.go('display')
+        }
+      );
+
+    };
+
+    $scope.removeSettings = function () {
+      $localStorage.myAppRun = false;
+      $state.go('welcome', null, {reload: true});
+    };
+
+    function generateUUID() {
+      var d, r, uuid;
+      d = new Date().getTime();
+      if (window.performance && typeof window.performance.now === "function") {
+        d += performance.now();
+      }
+      uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+        r = (d + Math.random() * 16) % 16 | 0;
+        d = Math.floor(d / 16);
+        return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+      });
+      return uuid;
     }
   });
