@@ -47,17 +47,19 @@ angular.module('bookingz.services', [])
 
   .service('loginService', function($q) {
     return {
-      loginUser: function(name, pw) {
+      loginUser: function(name, password) {
         var deferred = $q.defer();
         var promise = deferred.promise;
 
-        if (name == 'admin' && pw == 'password') {
+        if (name == 'admin' && password == 'password') {
           deferred.resolve({
             userName: name,
             message: 'Welcome ' + name + '!'
           });
         } else {
-          deferred.reject('Wrong credentials.');
+          deferred.reject({
+            message: 'Wrong credentials.'
+          });
         }
         promise.success = function(fn) {
           promise.then(fn);
@@ -67,6 +69,33 @@ angular.module('bookingz.services', [])
           promise.then(null, fn);
           return promise;
         };
+        return promise;
+      },
+      getLoginPattern: function() {
+        return window.localStorage.getItem('login_pattern');
+      },
+      setLoginPattern: function(pattern) {
+        window.localStorage.setItem('login_pattern', pattern);
+      },
+      checkLoginPattern: function(pattern) {
+        var deferred = $q.defer();
+        var promise = deferred.promise;
+
+        promise.success = function(fn) {
+          promise.then(fn);
+          return promise;
+        }
+        promise.error = function(fn) {
+          promise.then(null, fn);
+          return promise;
+        }
+
+        if (pattern == this.getLoginPattern()) {
+          deferred.resolve();
+        } else {
+          deferred.reject();
+        }
+
         return promise;
       }
     }

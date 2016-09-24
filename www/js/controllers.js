@@ -164,9 +164,11 @@ angular.module('bookingz.controllers', [])
       $state.go('welcome', null, {reload: true});
     };
 
-    $scope.login = function () {
+    $scope.login = function (name, password) {
+      var name = $scope.loginData.username || name;
+      var password = $scope.loginData.password || password;
       console.log("LOGIN user: " + $scope.loginData.username + " - PW: " + $scope.loginData.password);
-      loginService.loginUser($scope.loginData.username, $scope.loginData.password).success(function (data) {
+      loginService.loginUser(name, password).success(function (data) {
         $rootScope.currentUser.userName = data.userName;
         console.log($rootScope.currentUser.userName);
         $scope.currentUser = $rootScope.currentUser;
@@ -175,9 +177,40 @@ angular.module('bookingz.controllers', [])
         var alertPopup = $ionicPopup.alert({
           title: 'Login failed!',
           template: 'Please check your credentials!'
+        }).then(function (res) {
+          console.log('Tapped!', res);
+          lock.reset();
         });
+
+
       });
     };
+
+    $scope.log_pattern = loginService.getLoginPattern();
+
+    var lock = new PatternLock('#lockPattern', {
+      onDraw: function (pattern) {
+        if ($scope.log_pattern) {
+          loginService.checkLoginPattern(pattern).success(function (data) {
+            $scope.login('admin', 'password');
+            lock.reset();
+            $state.go('welcome');
+          }).error(function (data) {
+            lock.error();
+
+            $scope.login('admin', 'wrong');
+
+          });
+        } else {
+          loginService.setLoginPattern(pattern);
+
+          lock.reset();
+          $scope.log_pattern = loginService.getLoginPattern();
+          $scope.$apply();
+        }
+      }
+    });
+
 
     function generateUUID() {
       var d, r, uuid;
