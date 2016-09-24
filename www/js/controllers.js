@@ -135,7 +135,8 @@ angular.module('bookingz.controllers', [])
           resource: {
             uuid: uuid,
             designation: $scope.data.designation,
-            capacity: 20
+            description: $scope.data.description,
+            capacity: parseInt($scope.data.capacity)
           }
         }, function () {
           $localStorage.myAppRun = true;
