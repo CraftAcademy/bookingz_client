@@ -114,12 +114,24 @@ angular.module('bookingz.controllers', [])
 
   })
   .controller('setupController', function ($scope,
+                                           $rootScope,
                                            storageService,
                                            $localStorage,
                                            $state,
                                            bookingzService,
+                                           loginService,
+                                           $ionicPopup,
                                            $cordovaDevice) {
     $scope.data = {};
+    $scope.loginData = {};
+
+    console.log($rootScope.currentUser.userName);
+
+    if ($rootScope.currentUser.userName == '') {
+      $state.go('login');
+    }
+
+
     $scope.setSettings = function () {
       // get the devise UUID but on ionic serve we need to
       // fake one by generating it.
@@ -152,6 +164,21 @@ angular.module('bookingz.controllers', [])
       $state.go('welcome', null, {reload: true});
     };
 
+    $scope.login = function () {
+      console.log("LOGIN user: " + $scope.loginData.username + " - PW: " + $scope.loginData.password);
+      loginService.loginUser($scope.loginData.username, $scope.loginData.password).success(function (data) {
+        $rootScope.currentUser.userName = data.userName;
+        console.log($rootScope.currentUser.userName);
+        $scope.currentUser = $rootScope.currentUser;
+        $state.go('welcome', null, {reload: true});
+      }).error(function (data) {
+        var alertPopup = $ionicPopup.alert({
+          title: 'Login failed!',
+          template: 'Please check your credentials!'
+        });
+      });
+    };
+
     function generateUUID() {
       var d, r, uuid;
       d = new Date().getTime();
@@ -164,5 +191,7 @@ angular.module('bookingz.controllers', [])
         return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
       });
       return uuid;
-    }
+    };
+
+
   });

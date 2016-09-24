@@ -15,7 +15,7 @@ angular.module('bookingz',
 
   //.constant('API_URL', 'http://localhost:3000')
   .constant('API_URL', 'https://bookingz.herokuapp.com')
-  .run(function ($ionicPlatform) {
+  .run(function ($ionicPlatform, $rootScope) {
     $ionicPlatform.ready(function () {
       if (window.cordova) {
         window.plugins.insomnia.keepAwake();
@@ -34,6 +34,10 @@ angular.module('bookingz',
       if (window.StatusBar) {
         StatusBar.styleDefault();
       }
+
+      $rootScope.currentUser = {userName: ''};
+
+
     });
   })
 
@@ -66,6 +70,12 @@ angular.module('bookingz',
       .state('welcome', {
         url: '/welcome',
         templateUrl: 'templates/welcome.html',
+        controller: 'setupController'
+      })
+
+      .state('login', {
+        url: '/login',
+        templateUrl: 'templates/login.html',
         controller: 'setupController'
       });
 // if none of the above states are matched, use this as the fallback
