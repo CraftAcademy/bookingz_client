@@ -20,13 +20,14 @@ bookingzClient.controller('setupController', function ($scope,
     }
   });
 
-  $ionicModal.fromTemplateUrl('templates/welcome.html', {
+  $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
   }).then(function (modal) {
     $scope.modal = modal;
   });
 
   $scope.openModal = function () {
+    console.log($scope.lock);
     $scope.modal.show();
   };
 
@@ -46,6 +47,37 @@ bookingzClient.controller('setupController', function ($scope,
     $ionicLoading.hide();
   };
 
+  $scope.$on('modal.shown', function() {
+    console.log('Modal is shown!');
+    $scope.log_pattern = loginService.getLoginPattern();
+
+
+    $scope.lock = new PatternLock('#lockPattern', {
+      radius: 30,
+      margin: 20,
+      matrix: [4, 4],
+      onDraw: function (pattern) {
+        if ($scope.log_pattern) {
+          loginService.checkLoginPattern(pattern).success(function (data) {
+            $scope.login('admin', 'password');
+            $scope.lock.reset();
+            $scope.closeModal();
+            $state.go('welcome');
+
+          }).error(function (data) {
+            $scope.lock.error();
+            $scope.login('admin', 'wrong');
+          });
+        } else {
+          //lock.setPattern("12634");
+          loginService.setLoginPattern(pattern);
+          $scope.lock.reset();
+          $scope.log_pattern = loginService.getLoginPattern();
+          $scope.$apply();
+        }
+      }
+    });
+  });
 
   $scope.setSettings = function () {
     // get the devise UUID but on ionic serve we need to
@@ -112,32 +144,7 @@ bookingzClient.controller('setupController', function ($scope,
     });
   };
 
-  $scope.log_pattern = loginService.getLoginPattern();
 
-
-  var lock = new PatternLock('#lockPattern', {
-    radius: 30,
-    margin: 20,
-    matrix: [4, 4],
-    onDraw: function (pattern) {
-      if ($scope.log_pattern) {
-        loginService.checkLoginPattern(pattern).success(function (data) {
-          $scope.login('admin', 'password');
-          lock.reset();
-          $state.go('welcome');
-        }).error(function (data) {
-          lock.error();
-          $scope.login('admin', 'wrong');
-        });
-      } else {
-        //lock.setPattern("12634");
-        loginService.setLoginPattern(pattern);
-        lock.reset();
-        $scope.log_pattern = loginService.getLoginPattern();
-        $scope.$apply();
-      }
-    }
-  });
 
 
   function generateUUID() {
