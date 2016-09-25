@@ -127,15 +127,18 @@ angular.module('bookingz.controllers', [])
     $scope.loginData = {};
     console.log($rootScope.currentUser.userName);
 
-    if ($rootScope.currentUser.userName == '') {
-      //$state.go('login');
-      $ionicModal.fromTemplateUrl('templates/login.html', {
-        scope: $scope,
-        animation: 'slide-in-up'
-      }).then(function(modal) {
-        $scope.modal = modal;
-      });
-    }
+    $scope.$on('$ionicView.beforeEnter', function () {
+      //if ($rootScope.currentUser.userName == '') {
+        //$state.go('login');
+        $ionicModal.fromTemplateUrl('templates/login.html', {
+          scope: $scope,
+          animation: 'slide-in-up'
+        }).then(function(modal) {
+          $scope.modal = modal;
+        });
+      //}
+    });
+
 
     $scope.setSettings = function () {
       // get the devise UUID but on ionic serve we need to
@@ -158,15 +161,20 @@ angular.module('bookingz.controllers', [])
         }, function () {
           $localStorage.myAppRun = true;
           storageService.add({uuid: uuid});
-          $state.go('display')
+          $state.go('display', null, {reload: true})
         }
       );
 
     };
 
+    $scope.cancel = function(){
+      $state.go('display', null, {reload: true})
+    };
+
     $scope.removeSettings = function () {
       $localStorage.myAppRun = false;
-      $state.go('welcome', null, {reload: true});
+      console.log($localStorage.myAppData);
+      $state.go('login', null, {reload: true});
     };
 
     $scope.login = function (name, password) {
@@ -183,7 +191,6 @@ angular.module('bookingz.controllers', [])
           title: 'Login failed!',
           template: 'Please check your credentials!'
         }).then(function (res) {
-          console.log('Tapped!', res);
           lock.reset();
         });
 
@@ -214,9 +221,7 @@ angular.module('bookingz.controllers', [])
           $scope.log_pattern = loginService.getLoginPattern();
           $scope.$apply();
         }
-
       }
-
     });
 
 
