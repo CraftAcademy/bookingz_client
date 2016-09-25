@@ -1,7 +1,18 @@
 <ion-modal-view style="min-width: 70%; left: 15% !important;">
-  <ion-content>
+  <ion-header-bar>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <ht class="title">
+        Set up panel for {{currentUser.userName}}
+      </ht>
+      <div class="buttons">
+        <button class="button button-icon button-clear button-light ion-android-close"
+                ng-click="closeSetupModal()"></button>
+      </div>
+    </ion-header-bar>
 
-    <h3 class="grey">Set up panel for {{currentUser.userName}}</h3>
+
+  </ion-header-bar>
+  <ion-content>
     <div class="list">
       <label class="item item-input item-stacked-label">
         <span class="input-label">Designation</span>
@@ -15,8 +26,11 @@
         <span class="input-label">Capacity</span>
         <input type="text" placeholder="Capacity" ng-model="data.capacity">
       </label>
-      <button class="button button-block button-positive" ng-click="setSettings()">Save</button>
-      <button class="button button-block button-assertive" ng-click="cancelSettings()">Cancel</button>
+      <label class="item ">
+        <button class="button button-positive" ng-click="setSettings()">Save</button>
+        <button class="button button-assertive" ng-click="closeSetupModal()">Cancel</button>
+      </label>
+
     </div>
 
   </ion-content>

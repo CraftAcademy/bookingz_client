@@ -15,39 +15,23 @@ bookingzClient.controller('setupController', function ($scope,
 
   $scope.$on('$ionicView.beforeEnter', function () {
     if ($rootScope.currentUser == 'undefined') {
-      //$state.go('login');
-      //$scope.openModal()
+      $scope.openLoginModal()
     }
   });
 
   $ionicModal.fromTemplateUrl('templates/login.html', {
     scope: $scope
   }).then(function (modal) {
-    $scope.modal = modal;
+    $scope.loginModal = modal;
   });
 
-  $scope.openModal = function () {
-    console.log($scope.lock);
-    $scope.modal.show();
-  };
+  $ionicModal.fromTemplateUrl('templates/welcome.html', {
+    scope: $scope
+  }).then(function (modal) {
+    $scope.setupModal = modal;
+  });
 
-  $scope.closeModal = function () {
-    $scope.statusText = '';
-    $scope.modal.hide();
-  };
-
-  //Loading
-  $scope.showLoading = function (message) {
-    $ionicLoading.show({
-      template: message,
-      duration: 1500
-    });
-  };
-  $scope.hideLoading = function () {
-    $ionicLoading.hide();
-  };
-
-  $scope.$on('modal.shown', function() {
+  $scope.$on('modal.shown', function () {
     console.log('Modal is shown!');
     $scope.log_pattern = loginService.getLoginPattern();
 
@@ -61,15 +45,15 @@ bookingzClient.controller('setupController', function ($scope,
           loginService.checkLoginPattern(pattern).success(function (data) {
             $scope.login('admin', 'password');
             $scope.lock.reset();
-            $scope.closeModal();
-            $state.go('welcome');
+            $scope.closeLoginModal();
+            //$state.go('welcome');
+            $scope.openSetupModal();
 
           }).error(function (data) {
             $scope.lock.error();
             $scope.login('admin', 'wrong');
           });
         } else {
-          //lock.setPattern("12634");
           loginService.setLoginPattern(pattern);
           $scope.lock.reset();
           $scope.log_pattern = loginService.getLoginPattern();
@@ -100,21 +84,14 @@ bookingzClient.controller('setupController', function ($scope,
         }
       }, function () {
         $scope.hideLoading();
-        $scope.closeModal();
+        $scope.closeSetupModal();
         $localStorage.myAppRun = true;
         storageService.add({uuid: uuid});
-
-        //$state.go('display', null, {reload: true})
         $window.location.reload(true)
 
       }
     );
 
-  };
-
-  $scope.cancelSettings = function () {
-    //$state.go('display', null, {reload: true})
-    $scope.closeModal();
   };
 
   $scope.removeSettings = function () {
@@ -126,26 +103,55 @@ bookingzClient.controller('setupController', function ($scope,
   $scope.login = function (name, password) {
     var name = $scope.loginData.username || name;
     var password = $scope.loginData.password || password;
-    console.log("LOGIN user: " + $scope.loginData.username + " - PW: " + $scope.loginData.password);
     loginService.loginUser(name, password).success(function (data) {
       $rootScope.currentUser.userName = data.userName;
       console.log($rootScope.currentUser.userName);
       $scope.currentUser = $rootScope.currentUser;
-      $state.go('welcome', null, {reload: true});
+      return;
     }).error(function (data) {
-      var alertPopup = $ionicPopup.alert({
+      $ionicPopup.alert({
         title: 'Login failed!',
         template: 'Please check your credentials!'
       }).then(function (res) {
-        lock.reset();
+        $scope.lock.reset();
       });
 
 
     });
   };
 
+  $scope.openLoginModal = function () {
+    console.log($scope.lock);
+    $scope.loginModal.show();
+  };
 
+  $scope.closeLoginModal = function () {
+    $scope.statusText = '';
+    $scope.loginModal.hide();
+  };
 
+  $scope.openSetupModal = function () {
+    console.log($scope.lock);
+    $scope.setupModal.show();
+  };
+
+  $scope.closeSetupModal = function () {
+    $scope.statusText = '';
+    $scope.setupModal.hide();
+  };
+
+  //Loading
+  $scope.showLoading = function (message) {
+    $ionicLoading.show({
+      template: message,
+      duration: 1500
+    });
+  };
+  $scope.hideLoading = function () {
+    $ionicLoading.hide();
+  };
+
+  // UUID generator
 
   function generateUUID() {
     var d, r, uuid;
