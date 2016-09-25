@@ -12,8 +12,26 @@
   <!--</ion-content>-->
 <!--</ion-view>-->
 
-<ion-view view-title='Login' name='login-view'>
-  <ion-content class='center'>
+<!--<ion-view view-title='Login' name='login-view'>-->
+  <!--<ion-content class='center'>-->
+    <!--<div class='list card' ng-hide='log_pattern'>-->
+      <!--<div class='item item-icon-left'>-->
+        <!--<i class='icon ion-alert assertive'></i>-->
+        <!--<h2 class='assertive'>Please set your login pattern!</h2>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div id='lockPattern' class='pattern-holder patt-holder'></div>-->
+  <!--</ion-content>-->
+<!--</ion-view>-->
+
+<ion-modal-view  style="max-height:500px; max-width: 440px;">
+  <ion-header-bar>
+    <h1 class="title">Login</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
     <div class='list card' ng-hide='log_pattern'>
       <div class='item item-icon-left'>
         <i class='icon ion-alert assertive'></i>
@@ -22,4 +40,8 @@
     </div>
     <div id='lockPattern' class='pattern-holder patt-holder'></div>
   </ion-content>
-</ion-view>
+</ion-modal-view>
+
+
+
+

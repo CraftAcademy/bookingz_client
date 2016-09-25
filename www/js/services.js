@@ -45,7 +45,7 @@ angular.module('bookingz.services', [])
     };
   })
 
-  .service('loginService', function($q) {
+  .service('loginService', function($q, $localStorage) {
     return {
       loginUser: function(name, password) {
         var deferred = $q.defer();
@@ -72,10 +72,10 @@ angular.module('bookingz.services', [])
         return promise;
       },
       getLoginPattern: function() {
-        return window.localStorage.getItem('login_pattern');
+        return $localStorage.myAppData.login_pattern;
       },
       setLoginPattern: function(pattern) {
-        window.localStorage.setItem('login_pattern', pattern);
+        $localStorage.myAppData.login_pattern = pattern;
       },
       checkLoginPattern: function(pattern) {
         var deferred = $q.defer();

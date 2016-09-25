@@ -121,16 +121,21 @@ angular.module('bookingz.controllers', [])
                                            bookingzService,
                                            loginService,
                                            $ionicPopup,
+                                           $ionicModal,
                                            $cordovaDevice) {
     $scope.data = {};
     $scope.loginData = {};
-
     console.log($rootScope.currentUser.userName);
 
     if ($rootScope.currentUser.userName == '') {
-      $state.go('login');
+      //$state.go('login');
+      $ionicModal.fromTemplateUrl('templates/login.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
+      }).then(function(modal) {
+        $scope.modal = modal;
+      });
     }
-
 
     $scope.setSettings = function () {
       // get the devise UUID but on ionic serve we need to
@@ -188,7 +193,11 @@ angular.module('bookingz.controllers', [])
 
     $scope.log_pattern = loginService.getLoginPattern();
 
+
     var lock = new PatternLock('#lockPattern', {
+      radius:30,
+      margin:20,
+      matrix:[4,4],
       onDraw: function (pattern) {
         if ($scope.log_pattern) {
           loginService.checkLoginPattern(pattern).success(function (data) {
@@ -197,18 +206,17 @@ angular.module('bookingz.controllers', [])
             $state.go('welcome');
           }).error(function (data) {
             lock.error();
-
             $scope.login('admin', 'wrong');
-
           });
         } else {
           loginService.setLoginPattern(pattern);
-
           lock.reset();
           $scope.log_pattern = loginService.getLoginPattern();
           $scope.$apply();
         }
+
       }
+
     });
 
 
