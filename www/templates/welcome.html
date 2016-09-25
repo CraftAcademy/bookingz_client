@@ -1,25 +1,23 @@
-<ion-nav-view>
-  <ion-view view-title="Welcome">
-    <ion-content>
+<ion-modal-view style="min-width: 70%; left: 15% !important;">
+  <ion-content>
 
-      <h3 class="grey">Set up panel for {{currentUser.userName}}</h3>
-      <div class="list">
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Designation</span>
-          <input type="text" placeholder="Room name" ng-model="data.designation">
-        </label>
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Description</span>
-          <input type="text" placeholder="Room description" ng-model="data.description">
-        </label>
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Capacity</span>
-          <input type="text" placeholder="Capacity" ng-model="data.capacity">
-        </label>
-        <button class="button button-block button-positive" ng-click="setSettings()">Save</button>
-        <button class="button button-block button-assertive" ng-click="cancelSettings()">Cancel</button>
-      </div>
+    <h3 class="grey">Set up panel for {{currentUser.userName}}</h3>
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Designation</span>
+        <input type="text" placeholder="Room name" ng-model="data.designation">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Description</span>
+        <input type="text" placeholder="Room description" ng-model="data.description">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Capacity</span>
+        <input type="text" placeholder="Capacity" ng-model="data.capacity">
+      </label>
+      <button class="button button-block button-positive" ng-click="setSettings()">Save</button>
+      <button class="button button-block button-assertive" ng-click="cancelSettings()">Cancel</button>
+    </div>
 
-    </ion-content>
-  </ion-view>
-</ion-nav-view>
+  </ion-content>
+</ion-modal-view>

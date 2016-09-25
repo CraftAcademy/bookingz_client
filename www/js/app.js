@@ -45,7 +45,7 @@ var bookingzClient = angular.module('bookingz',
     //console.log(localStorage.getItem('ngStorage-myAppRun'));
     // set default route to wizard
     //var defaultRoute = '/welcome';
-    var defaultRoute = '/login';
+    var defaultRoute = '/display';
 
 
     // check whether wizard has been run in order to change default route
@@ -67,17 +67,17 @@ var bookingzClient = angular.module('bookingz',
         templateUrl: 'templates/info-board.html',
         controller: 'IndexController'
       })
-      .state('welcome', {
-        url: '/welcome',
-        templateUrl: 'templates/welcome.html',
-        controller: 'setupController'
-      })
-
-      .state('login', {
-        url: '/login',
-        templateUrl: 'templates/login.html',
-        controller: 'setupController'
-      });
+      //.state('welcome', {
+      //  url: '/welcome',
+      //  templateUrl: 'templates/welcome.html',
+      //  controller: 'setupController'
+      //})
+      //
+      //.state('login', {
+      //  url: '/login',
+      //  templateUrl: 'templates/login.html',
+      //  controller: 'setupController'
+      //});
 // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise(defaultRoute);
   });

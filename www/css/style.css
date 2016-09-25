@@ -55,3 +55,19 @@ h1, h2, h3 .grey {
 .float {
 }
 
+.modal{
+  max-width: 42.5% !important;
+  max-height: 62% !important;
+  bottom: 20% !important;
+  top: 20% !important;
+  left: 30% !important;
+  right: 30% !important;
+}
+
+.active .modal-backdrop-bg {
+  opacity: .5 !important;
+  transition: opacity 300ms ease-in-out;
+  background: black !important;
+}
+
+
