@@ -125,10 +125,10 @@ angular.module('bookingz.controllers', [])
                                            $cordovaDevice) {
     $scope.data = {};
     $scope.loginData = {};
-    console.log($rootScope.currentUser.userName);
+    console.log($rootScope.currentUser == 'undefined');
 
     $scope.$on('$ionicView.beforeEnter', function () {
-      //if ($rootScope.currentUser.userName == '') {
+      if ($rootScope.currentUser == 'undefined' ) {
         //$state.go('login');
         $ionicModal.fromTemplateUrl('templates/login.html', {
           scope: $scope,
@@ -136,7 +136,7 @@ angular.module('bookingz.controllers', [])
         }).then(function(modal) {
           $scope.modal = modal;
         });
-      //}
+      }
     });
 
 
@@ -167,7 +167,7 @@ angular.module('bookingz.controllers', [])
 
     };
 
-    $scope.cancel = function(){
+    $scope.cancelSettings = function(){
       $state.go('display', null, {reload: true})
     };
 
@@ -216,6 +216,7 @@ angular.module('bookingz.controllers', [])
             $scope.login('admin', 'wrong');
           });
         } else {
+          //lock.setPattern("12634");
           loginService.setLoginPattern(pattern);
           lock.reset();
           $scope.log_pattern = loginService.getLoginPattern();

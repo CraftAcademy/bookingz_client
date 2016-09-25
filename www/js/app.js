@@ -45,7 +45,8 @@ angular.module('bookingz',
 
     //console.log(localStorage.getItem('ngStorage-myAppRun'));
     // set default route to wizard
-    var defaultRoute = '/welcome';
+    //var defaultRoute = '/welcome';
+    var defaultRoute = '/login';
 
 
     // check whether wizard has been run in order to change default route
