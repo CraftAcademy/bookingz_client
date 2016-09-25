@@ -7,19 +7,20 @@ bookingzClient.controller('setupController', function ($scope,
                                                        loginService,
                                                        $ionicPopup,
                                                        $ionicModal,
-                                                       $cordovaDevice) {
+                                                       $ionicLoading,
+                                                       $cordovaDevice,
+                                                       $window) {
   $scope.data = {};
   $scope.loginData = {};
-  console.log($rootScope.currentUser == 'undefined');
 
   $scope.$on('$ionicView.beforeEnter', function () {
     if ($rootScope.currentUser == 'undefined') {
       //$state.go('login');
-      $scope.openModal()
+      //$scope.openModal()
     }
   });
 
-  $ionicModal.fromTemplateUrl('templates/login.html', {
+  $ionicModal.fromTemplateUrl('templates/welcome.html', {
     scope: $scope
   }).then(function (modal) {
     $scope.modal = modal;
@@ -34,10 +35,22 @@ bookingzClient.controller('setupController', function ($scope,
     $scope.modal.hide();
   };
 
+  //Loading
+  $scope.showLoading = function (message) {
+    $ionicLoading.show({
+      template: message,
+      duration: 1500
+    });
+  };
+  $scope.hideLoading = function () {
+    $ionicLoading.hide();
+  };
+
 
   $scope.setSettings = function () {
     // get the devise UUID but on ionic serve we need to
     // fake one by generating it.
+    $scope.showLoading('Sending Data');
     var uuid;
     try {
       uuid = $cordovaDevice.getUUID();
@@ -54,16 +67,22 @@ bookingzClient.controller('setupController', function ($scope,
           capacity: parseInt($scope.data.capacity)
         }
       }, function () {
+        $scope.hideLoading();
+        $scope.closeModal();
         $localStorage.myAppRun = true;
         storageService.add({uuid: uuid});
-        $state.go('display', null, {reload: true})
+
+        //$state.go('display', null, {reload: true})
+        $window.location.reload(true)
+
       }
     );
 
   };
 
   $scope.cancelSettings = function () {
-    $state.go('display', null, {reload: true})
+    //$state.go('display', null, {reload: true})
+    $scope.closeModal();
   };
 
   $scope.removeSettings = function () {
@@ -137,3 +156,5 @@ bookingzClient.controller('setupController', function ($scope,
 
 
 });
+
+
