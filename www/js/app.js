@@ -39,7 +39,10 @@ var bookingzClient = angular.module('bookingz',
 
     });
   })
-
+  .config(function($ionicConfigProvider){
+    $ionicConfigProvider.scrolling.jsScrolling(false);
+  })
+  
   .config(function ($stateProvider, $urlRouterProvider) {
 
     //console.log(localStorage.getItem('ngStorage-myAppRun'));
@@ -67,17 +70,17 @@ var bookingzClient = angular.module('bookingz',
         templateUrl: 'templates/info-board.html',
         controller: 'IndexController'
       })
-      //.state('welcome', {
-      //  url: '/welcome',
-      //  templateUrl: 'templates/welcome.html',
-      //  controller: 'setupController'
-      //})
-      //
-      //.state('login', {
-      //  url: '/login',
-      //  templateUrl: 'templates/login.html',
-      //  controller: 'setupController'
-      //});
+    //.state('welcome', {
+    //  url: '/welcome',
+    //  templateUrl: 'templates/welcome.html',
+    //  controller: 'setupController'
+    //})
+    //
+    //.state('login', {
+    //  url: '/login',
+    //  templateUrl: 'templates/login.html',
+    //  controller: 'setupController'
+    //});
 // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise(defaultRoute);
   });

@@ -26,7 +26,8 @@ bookingzClient.controller('setupController', function ($scope,
   });
 
   $ionicModal.fromTemplateUrl('templates/welcome.html', {
-    scope: $scope
+    scope: $scope,
+    focusFirstInput: true
   }).then(function (modal) {
     $scope.setupModal = modal;
   });
@@ -88,7 +89,6 @@ bookingzClient.controller('setupController', function ($scope,
         $localStorage.myAppRun = true;
         storageService.add({uuid: uuid});
         $window.location.reload(true)
-
       }
     );
 
@@ -97,7 +97,7 @@ bookingzClient.controller('setupController', function ($scope,
   $scope.removeSettings = function () {
     $localStorage.myAppRun = false;
     console.log($localStorage.myAppData);
-    $state.go('login', null, {reload: true});
+    $scope.openLoginModal();
   };
 
   $scope.login = function (name, password) {
