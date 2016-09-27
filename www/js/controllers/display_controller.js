@@ -10,8 +10,10 @@ bookingzClient.controller('DisplayController', function ($scope,
     $scope.uuid = getStoredUuid();
     bookingzService.query({uuid: $scope.uuid}, function (data) {
       $scope.resource = data;
+      console.log($scope.resource);
       getSlotInfo(data);
     });
+
   });
 
   var poller = poller.get(bookingzService,

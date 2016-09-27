@@ -12,8 +12,12 @@ bookingzClient.controller('setupController', function ($scope,
                                                        $window) {
   $scope.data = {};
   $scope.loginData = {};
+  if ($localStorage.myAppData.resource) {
+    $scope.resource = $localStorage.myAppData.resource;
+  }
 
   $scope.$on('$ionicView.beforeEnter', function () {
+
     if ($rootScope.currentUser == 'undefined') {
       $scope.openLoginModal()
     }
@@ -76,18 +80,20 @@ bookingzClient.controller('setupController', function ($scope,
       uuid = generateUUID();
     }
 
-    bookingzService.post({
-        resource: {
-          uuid: uuid,
-          designation: $scope.data.designation,
-          description: $scope.data.description,
-          capacity: parseInt($scope.data.capacity)
-        }
-      }, function () {
+    var resourceOptions = {
+      resource: {
+        uuid: uuid,
+        designation: $scope.data.designation,
+        description: $scope.data.description,
+        capacity: parseInt($scope.data.capacity)
+      }
+    };
+
+    bookingzService.post(resourceOptions , function () {
         $scope.hideLoading();
         $scope.closeSetupModal();
         $localStorage.myAppRun = true;
-        storageService.add({uuid: uuid});
+        storageService.add(resourceOptions);
         $window.location.reload(true)
       }
     );
@@ -136,7 +142,6 @@ bookingzClient.controller('setupController', function ($scope,
   };
 
   $scope.closeSetupModal = function () {
-    $scope.statusText = '';
     $scope.setupModal.hide();
   };
 

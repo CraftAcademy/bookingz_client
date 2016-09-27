@@ -34,16 +34,20 @@ var bookingzClient = angular.module('bookingz',
         StatusBar.styleDefault();
       }
 
-      $rootScope.currentUser = {userName: ''};
+
+      $rootScope.currentUser = {userName: 'Test'};
 
 
     });
+
   })
   .config(function($ionicConfigProvider){
     $ionicConfigProvider.scrolling.jsScrolling(false);
   })
-  
+
   .config(function ($stateProvider, $urlRouterProvider) {
+
+
 
     //console.log(localStorage.getItem('ngStorage-myAppRun'));
     // set default route to wizard

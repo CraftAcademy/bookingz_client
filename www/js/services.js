@@ -1,7 +1,6 @@
 angular.module('bookingz.services', [])
 
   .factory('bookingzService', function ($resource, API_URL) {
-    // Note: The uuid need to be hardcoded for each individual resource.
     var headers = {'Accept': 'application/json'};
     return $resource(API_URL + '/api/resources/:uuid', {},
       {
@@ -22,32 +21,31 @@ angular.module('bookingz.services', [])
         },
         post: {
           method: 'POST',
-          headers: {'Accept': 'application/json', 'Content-Type':'application/json; charset=UTF-8'}
+          headers: {'Accept': 'application/json', 'Content-Type': 'application/json; charset=UTF-8'}
         }
       })
 
   })
-  .factory('storageService', function ($localStorage){
+  .factory('storageService', function ($localStorage) {
     $localStorage = $localStorage.$default({
       myAppData: []
     });
-    var _getAll = function () {
-      return $localStorage.myAppData;
-    };
-    var _add = function (setting) {
-      $localStorage.myAppData = {};
-      $localStorage.myAppData = setting;
-    };
-
     return {
-      getAll: _getAll,
-      add: _add
+      getAll: function () {
+        console.log($localStorage.myAppData.resource);
+        return $localStorage.myAppData.resource;
+      },
+
+      add: function (setting) {
+        $localStorage.myAppData.resource = setting.resource;
+        console.log($localStorage.myAppData)
+      }
     };
   })
 
-  .service('loginService', function($q, $localStorage) {
+  .service('loginService', function ($q, $localStorage) {
     return {
-      loginUser: function(name, password) {
+      loginUser: function (name, password) {
         var deferred = $q.defer();
         var promise = deferred.promise;
 
@@ -61,34 +59,35 @@ angular.module('bookingz.services', [])
             message: 'Wrong credentials.'
           });
         }
-        promise.success = function(fn) {
+        promise.success = function (fn) {
           promise.then(fn);
           return promise;
         };
-        promise.error = function(fn) {
+        promise.error = function (fn) {
           promise.then(null, fn);
           return promise;
         };
         return promise;
       },
-      getLoginPattern: function() {
+      getLoginPattern: function () {
+        console.log($localStorage.myAppData);
         return $localStorage.myAppData.login_pattern;
       },
-      setLoginPattern: function(pattern) {
+      setLoginPattern: function (pattern) {
         $localStorage.myAppData.login_pattern = pattern;
       },
-      checkLoginPattern: function(pattern) {
+      checkLoginPattern: function (pattern) {
         var deferred = $q.defer();
         var promise = deferred.promise;
 
-        promise.success = function(fn) {
+        promise.success = function (fn) {
           promise.then(fn);
           return promise;
-        }
-        promise.error = function(fn) {
+        };
+        promise.error = function (fn) {
           promise.then(null, fn);
           return promise;
-        }
+        };
 
         if (pattern == this.getLoginPattern()) {
           deferred.resolve();
