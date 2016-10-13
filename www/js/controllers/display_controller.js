@@ -14,7 +14,7 @@ bookingzClient.controller('DisplayController', function ($scope,
 
   $scope.$on('resourcePresent', function(){
     $scope.hasResource = true;
-    poller.promise.then(null, null, function (response) {
+    poll.promise.then(null, null, function (response) {
       response.items.filter(function (resource) {
         if (resource.uuid == $scope.uuid) {
           $scope.resource = resource;
@@ -26,7 +26,7 @@ bookingzClient.controller('DisplayController', function ($scope,
     });
   });
 
-  var poller = poller.get(bookingzService,
+  var poll = poller.get(bookingzService,
     {
       delay: 20000,
       smart: true
@@ -43,14 +43,6 @@ bookingzClient.controller('DisplayController', function ($scope,
       });
     }
   });
-
-
-  $scope.allBookings = function () {
-    bookingzService.query({uuid: getStoredUuid()}, function (data) {
-      $scope.resource = data;
-      getSlotInfo(data);
-    });
-  };
 
   function getStoredUuid() {
     var resource = storageService.getAll().resource;
@@ -72,6 +64,4 @@ bookingzClient.controller('DisplayController', function ($scope,
       }
     });
   }
-
-
 });
