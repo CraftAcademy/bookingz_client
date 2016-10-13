@@ -15,6 +15,7 @@ bookingzClient.controller('setupController', function ($scope,
   if ($localStorage.myAppData.resource) {
 
     $scope.resource = $localStorage.myAppData.resource;
+    $scope.$emit('resourcePresent')
   } else {
     $scope.$emit('noResource')
   }

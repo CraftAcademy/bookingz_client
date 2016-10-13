@@ -12,6 +12,9 @@ bookingzClient.controller('DisplayController', function ($scope,
     })
   });
 
+  $scope.$on('resourcePresent', function(){
+
+  });
   var poller = poller.get(bookingzService,
     {
       delay: 20000,
