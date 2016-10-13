@@ -2,20 +2,14 @@
 
   <ion-header-bar class="bar bar-header bar-positive">
     <ht class="title">
-      Login
+      {{log_pattern ? 'Login' : 'Please set your login pattern!' }}
     </ht>
     <div class="buttons">
       <button class="button button-icon button-clear button-light ion-android-close"
               ng-click="closeLoginModal()"></button>
     </div>
   </ion-header-bar>
-  <ion-content >
-    <div class='list card' ng-hide='log_pattern'>
-      <div class='item item-icon-left'>
-        <i class='icon ion-alert assertive'></i>
-        <h2 class='assertive'>Please set your login pattern!</h2>
-      </div>
-    </div>
+  <ion-content>
     <div id='lockPattern' class='pattern-holder patt-holder'></div>
   </ion-content>
 </ion-modal-view>
