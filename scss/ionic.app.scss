@@ -17,6 +17,9 @@ $dark:                            #444 !default;
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
+$modal-inset-mode-break-point:    0px;  // modals are ALWAYS windowed
+$modal-inset-mode-right:          5%;   // 5% "margin" to the right
+$modal-inset-mode-left:           5%;   // 5% "margin" to the left
 
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";

@@ -3,10 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('bookingz',
+var bookingzClient = angular.module('bookingz',
   ['ionic',
     'ngCordova',
-    'bookingz.controllers',
     'bookingz.services',
     'ngResource',
     'emguo.poller',
@@ -15,7 +14,7 @@ angular.module('bookingz',
 
   //.constant('API_URL', 'http://localhost:3000')
   .constant('API_URL', 'https://bookingz.herokuapp.com')
-  .run(function ($ionicPlatform) {
+  .run(function ($ionicPlatform, $rootScope) {
     $ionicPlatform.ready(function () {
       if (window.cordova) {
         window.plugins.insomnia.keepAwake();
@@ -34,14 +33,26 @@ angular.module('bookingz',
       if (window.StatusBar) {
         StatusBar.styleDefault();
       }
+
+
+      $rootScope.currentUser = {userName: 'Test'};
+
+
     });
+
+  })
+  .config(function($ionicConfigProvider){
+    $ionicConfigProvider.scrolling.jsScrolling(false);
   })
 
   .config(function ($stateProvider, $urlRouterProvider) {
 
+
+
     //console.log(localStorage.getItem('ngStorage-myAppRun'));
     // set default route to wizard
-    var defaultRoute = '/welcome';
+    //var defaultRoute = '/welcome';
+    var defaultRoute = '/display';
 
 
     // check whether wizard has been run in order to change default route
@@ -63,11 +74,17 @@ angular.module('bookingz',
         templateUrl: 'templates/info-board.html',
         controller: 'IndexController'
       })
-      .state('welcome', {
-        url: '/welcome',
-        templateUrl: 'templates/welcome.html',
-        controller: 'setupController'
-      });
+    //.state('welcome', {
+    //  url: '/welcome',
+    //  templateUrl: 'templates/welcome.html',
+    //  controller: 'setupController'
+    //})
+    //
+    //.state('login', {
+    //  url: '/login',
+    //  templateUrl: 'templates/login.html',
+    //  controller: 'setupController'
+    //});
 // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise(defaultRoute);
   });

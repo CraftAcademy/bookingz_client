@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.bookingzclient479053" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>bookingz_client</name>
+  <name>CA Bookingz</name>
   <description>
-        An Ionic Framework and Cordova project.
+        An Craft Academy Labs Project.
     </description>
   <author email="you@example.com" href="http://example.com.com/">
       Your Name Here
     </author>
   <content src="index.html"/>
   <access origin="*"/>
+  <allow-navigation href="http://*/*" />
+  <allow-navigation href="https://*/*" />
   <preference name="orientation" value="landscape" />
   <preference name="Fullscreen" value="true" />
   <preference name="webviewbounce" value="false"/>

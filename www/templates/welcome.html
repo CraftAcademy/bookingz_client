@@ -1,24 +1,37 @@
-<ion-nav-view>
-  <ion-view view-title="Welcome">
-    <ion-content>
-
-      <h3 class="grey">Set up panel</h3>
-      <div class="list">
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Designation</span>
-          <input type="text" placeholder="Room name" ng-model="data.designation">
-        </label>
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Description</span>
-          <input type="text" placeholder="Room description" ng-model="data.description">
-        </label>
-        <label class="item item-input item-stacked-label">
-          <span class="input-label">Capacity</span>
-          <input type="text" placeholder="Capacity" ng-model="data.capacity">
-        </label>
-        <button class="button button-block button-positive" ng-click="setSettings()">Save</button>
+<ion-modal-view style="min-width: 70%; left: 15% !important;">
+  <ion-header-bar>
+    <ion-header-bar class="bar bar-header bar-positive">
+      <ht class="title">
+        Set up panel for {{currentUser.userName}}
+      </ht>
+      <div class="buttons">
+        <button class="button button-icon button-clear button-light ion-android-close"
+                ng-click="closeSetupModal()"></button>
       </div>
+    </ion-header-bar>
 
-    </ion-content>
-  </ion-view>
-</ion-nav-view>
+
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Designation</span>
+        <input type="text" placeholder="Room name" ng-model="data.designation" ng-init="data.designation = resource.designation">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Description</span>
+        <input type="text" placeholder="Room description" ng-model="data.description" ng-init="data.description = resource.description">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Capacity</span>
+        <input type="text" placeholder="Capacity" ng-model="data.capacity" ng-init="data.capacity = resource.capacity">
+      </label>
+      <ion-item>
+        <button class="button button-positive" ng-click="setSettings()">Save</button>
+        <button class="button button-assertive" ng-click="closeSetupModal()">Cancel</button>
+      </ion-item>
+
+    </div>
+
+  </ion-content>
+</ion-modal-view>
