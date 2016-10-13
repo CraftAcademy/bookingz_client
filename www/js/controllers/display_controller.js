@@ -6,13 +6,7 @@ bookingzClient.controller('DisplayController', function ($scope,
                                                          storageService) {
 
   $ionicPlatform.ready(function () {
-    $scope.date = Date.now();
-    $scope.uuid = getStoredUuid();
-    bookingzService.query({uuid: $scope.uuid}, function (data) {
-      $scope.resource = data;
-      console.log($scope.resource);
-      getSlotInfo(data);
-    });
+
 
   });
 
@@ -24,6 +18,13 @@ bookingzClient.controller('DisplayController', function ($scope,
   );
 
   $scope.$on('$ionicView.enter', function () {
+    $scope.date = Date.now();
+    $scope.uuid = getStoredUuid();
+    bookingzService.query({uuid: $scope.uuid}, function (data) {
+      $scope.resource = data;
+      console.log($scope.resource);
+      getSlotInfo(data);
+    });
     poller.promise.then(null, null, function (response) {
       response.items.filter(function (resource) {
         if (resource.designation == $scope.resource.designation) {
