@@ -6,8 +6,10 @@ bookingzClient.controller('DisplayController', function ($scope,
                                                          storageService) {
 
   $ionicPlatform.ready(function () {
-
-
+    $scope.$on('noResource', function(){
+      $scope.hasResource = false;
+      $scope.noResourceMessage = 'There is no resource';
+    })
   });
 
   var poller = poller.get(bookingzService,
