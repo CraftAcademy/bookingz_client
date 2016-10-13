@@ -26,20 +26,21 @@ angular.module('bookingz.services', [])
       })
 
   })
-  .factory('storageService', function ($localStorage) {
+  .factory('storageService', function ($localStorage){
     $localStorage = $localStorage.$default({
       myAppData: []
     });
-    return {
-      getAll: function () {
-        console.log($localStorage.myAppData.resource);
-        return $localStorage.myAppData.resource;
-      },
+    var _getAll = function () {
+      return $localStorage.myAppData;
+    };
+    var _add = function (setting) {
+      $localStorage.myAppData = {};
+      $localStorage.myAppData = setting;
+    };
 
-      add: function (setting) {
-        $localStorage.myAppData.resource = setting.resource;
-        console.log($localStorage.myAppData)
-      }
+    return {
+      getAll: _getAll,
+      add: _add
     };
   })
 

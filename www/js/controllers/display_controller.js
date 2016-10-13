@@ -21,10 +21,11 @@ bookingzClient.controller('DisplayController', function ($scope,
     $scope.date = Date.now();
     $scope.uuid = getStoredUuid();
     bookingzService.query({uuid: $scope.uuid}, function (data) {
+      debugger;
       $scope.resource = data;
-      console.log($scope.resource);
-      getSlotInfo(data);
+      getSlotInfo($scope.resource);
     });
+    
     poller.promise.then(null, null, function (response) {
       response.items.filter(function (resource) {
         if (resource.designation == $scope.resource.designation) {
@@ -43,8 +44,9 @@ bookingzClient.controller('DisplayController', function ($scope,
   };
 
   function getStoredUuid() {
-    var uuid = storageService.getAll(uuid).uuid;
-    return uuid;
+    debugger;
+    var resource = storageService.getAll().resource;
+    return resource.uuid;
   }
 
   function getSlotInfo(data) {
