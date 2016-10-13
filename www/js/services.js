@@ -22,6 +22,11 @@ angular.module('bookingz.services', [])
         post: {
           method: 'POST',
           headers: {'Accept': 'application/json', 'Content-Type': 'application/json; charset=UTF-8'}
+        },
+
+        put: {
+          method: 'PUT',
+          headers: {'Accept': 'application/json', 'Content-Type': 'application/json; charset=UTF-8'}
         }
       })
 

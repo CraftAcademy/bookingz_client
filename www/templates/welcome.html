@@ -27,7 +27,8 @@
         <input type="text" placeholder="Capacity" ng-model="data.capacity" ng-init="data.capacity = resource.capacity">
       </label>
       <ion-item>
-        <button class="button button-positive" ng-click="setSettings()">Save</button>
+        <button class="button button-positive" ng-click="setSettings('create')" ng-hide="resource">Create</button>
+        <button class="button button-positive" ng-click="setSettings('update')" ng-hide="!resource">Update</button>
         <button class="button button-assertive" ng-click="closeSetupModal()">Cancel</button>
       </ion-item>
 
