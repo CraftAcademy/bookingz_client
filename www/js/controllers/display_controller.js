@@ -5,16 +5,27 @@ bookingzClient.controller('DisplayController', function ($scope,
                                                          $localStorage,
                                                          storageService) {
 
-  $ionicPlatform.ready(function () {
-    $scope.$on('noResource', function(){
-      $scope.hasResource = false;
-      $scope.noResourceMessage = 'There is no resource';
-    })
+  $scope.hasResource = false;
+
+  $scope.$on('noResource', function(){
+    $scope.hasResource = false;
+    $scope.noResourceMessage = 'There is no resource';
   });
 
   $scope.$on('resourcePresent', function(){
+    $scope.hasResource = true;
+    poller.promise.then(null, null, function (response) {
+      response.items.filter(function (resource) {
+        if (resource.uuid == $scope.uuid) {
+          $scope.resource = resource;
+        }
+      });
 
+      getSlotInfo($scope.resource);
+      console.log('polling');
+    });
   });
+
   var poller = poller.get(bookingzService,
     {
       delay: 20000,
@@ -23,31 +34,22 @@ bookingzClient.controller('DisplayController', function ($scope,
   );
 
   $scope.$on('$ionicView.enter', function () {
-    $scope.date = Date.now();
-    $scope.uuid = getStoredUuid();
-    //$scope.resource = {};
-    bookingzService.query({uuid: $scope.uuid}, function (data) {
-      //$scope.resource = data;
-      getSlotInfo(data);
-    });
+    if ($scope.hasResource) {
+      $scope.date = Date.now();
+      $scope.uuid = getStoredUuid();
 
+      bookingzService.query({uuid: $scope.uuid}, function (data) {
+        getSlotInfo(data);
+      });
+    }
   });
 
-  poller.promise.then(null, null, function (response) {
-    response.items.filter(function (resource) {
-      if (resource.uuid == $scope.uuid) {
-        $scope.resource = resource;
-      }
-    });
-    getSlotInfo($scope.resource);
-    console.log('polling')
-  });
 
   $scope.allBookings = function () {
     bookingzService.query({uuid: getStoredUuid()}, function (data) {
       $scope.resource = data;
       getSlotInfo(data);
-    })
+    });
   };
 
   function getStoredUuid() {
@@ -57,7 +59,6 @@ bookingzClient.controller('DisplayController', function ($scope,
 
   function getSlotInfo(data) {
     var date = new Date();
-    var data = data;
     var currentDateTime = Date.parse(date.toString());
     angular.forEach(data.slots, function (slot) {
       var bookingTimes = slot.info.time.split(' - ');
@@ -69,7 +70,7 @@ bookingzClient.controller('DisplayController', function ($scope,
           $scope.meeting = slot.info;
         }
       }
-    })
+    });
   }
 
 

@@ -12,12 +12,12 @@ bookingzClient.controller('setupController', function ($scope,
                                                        $window) {
   $scope.data = {};
   $scope.loginData = {};
-  if ($localStorage.myAppData.resource) {
 
+  if ($localStorage.myAppData.resource) {
     $scope.resource = $localStorage.myAppData.resource;
-    $scope.$emit('resourcePresent')
+    $scope.$emit('resourcePresent');
   } else {
-    $scope.$emit('noResource')
+    $scope.$emit('noResource');
   }
 
   $scope.$on('$ionicView.beforeEnter', function () {
@@ -178,5 +178,3 @@ bookingzClient.controller('setupController', function ($scope,
 
 
 });
-
-
