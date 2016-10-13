@@ -72,16 +72,20 @@ bookingzClient.controller('setupController', function ($scope,
     });
   });
 
-  $scope.setSettings = function () {
+  $scope.setSettings = function (action) {
     // get the devise UUID but on ionic serve we need to
     // fake one by generating it.
     $scope.showLoading('Sending Data');
     var uuid;
-    try {
-      uuid = $cordovaDevice.getUUID();
-    }
-    catch (err) {
-      uuid = generateUUID();
+    if (action == 'create') {
+      try {
+        uuid = $cordovaDevice.getUUID();
+      }
+      catch (err) {
+        uuid = generateUUID();
+      }
+    } else {
+      uuid = $scope.resource.uuid;
     }
 
     var resourceOptions = {
@@ -92,15 +96,26 @@ bookingzClient.controller('setupController', function ($scope,
         capacity: parseInt($scope.data.capacity)
       }
     };
+    if (action == 'create') {
+      bookingzService.post(resourceOptions, function () {
+          $scope.hideLoading();
+          $scope.closeSetupModal();
+          $localStorage.myAppRun = true;
+          storageService.add(resourceOptions);
+          $window.location.reload(true)
+        }
+      );
+    } else {
+      bookingzService.put({uuid: uuid, resource: resourceOptions.resource}, function () {
+          $scope.hideLoading();
+          $scope.closeSetupModal();
+          storageService.add(resourceOptions);
+          $window.location.reload(true)
+        }
+      );
 
-    bookingzService.post(resourceOptions , function () {
-        $scope.hideLoading();
-        $scope.closeSetupModal();
-        $localStorage.myAppRun = true;
-        storageService.add(resourceOptions);
-        $window.location.reload(true)
-      }
-    );
+    }
+
 
   };
 
