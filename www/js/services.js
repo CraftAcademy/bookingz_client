@@ -26,10 +26,11 @@ angular.module('bookingz.services', [])
       })
 
   })
-  .factory('storageService', function ($localStorage){
+  .factory('storageService', function ($localStorage) {
     $localStorage = $localStorage.$default({
       myAppData: []
     });
+
     var _getAll = function () {
       return $localStorage.myAppData;
     };
@@ -71,11 +72,11 @@ angular.module('bookingz.services', [])
         return promise;
       },
       getLoginPattern: function () {
-        console.log($localStorage.myAppData);
-        return $localStorage.myAppData.login_pattern;
+        console.log($localStorage);
+        return $localStorage.login_pattern;
       },
       setLoginPattern: function (pattern) {
-        $localStorage.myAppData.login_pattern = pattern;
+        $localStorage.login_pattern = pattern;
       },
       checkLoginPattern: function (pattern) {
         var deferred = $q.defer();
