@@ -9,10 +9,10 @@
     </author>
   <content src="index.html"/>
   <access origin="*"/>
-  <allow-navigation href="http://*/*" />
-  <allow-navigation href="https://*/*" />
-  <preference name="orientation" value="landscape" />
-  <preference name="Fullscreen" value="true" />
+  <allow-navigation href="http://*/*"/>
+  <allow-navigation href="https://*/*"/>
+  <preference name="orientation" value="landscape"/>
+  <preference name="Fullscreen" value="true"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
@@ -30,7 +30,7 @@
   <plugin name="cordova-plugin-splashscreen" spec="~3.2.2"/>
   <plugin name="cordova-plugin-statusbar" spec="~2.1.3"/>
   <plugin name="ionic-plugin-keyboard" spec="~2.2.1"/>
-  <plugin name="cordova-plugin-insomnia" version="4.1.0" source="npm" />
+  <plugin name="cordova-plugin-insomnia" version="4.1.0" source="npm"/>
   <platform name="ios">
     <icon src="resources/ios/icon/icon.png" width="57" height="57"/>
     <icon src="resources/ios/icon/icon@2x.png" width="114" height="114"/>
@@ -76,11 +76,6 @@
     <splash src="resources/android/splash/drawable-land-xhdpi-screen.png" density="land-xhdpi"/>
     <splash src="resources/android/splash/drawable-land-xxhdpi-screen.png" density="land-xxhdpi"/>
     <splash src="resources/android/splash/drawable-land-xxxhdpi-screen.png" density="land-xxxhdpi"/>
-    <splash src="resources/android/splash/drawable-port-ldpi-screen.png" density="port-ldpi"/>
-    <splash src="resources/android/splash/drawable-port-mdpi-screen.png" density="port-mdpi"/>
-    <splash src="resources/android/splash/drawable-port-hdpi-screen.png" density="port-hdpi"/>
-    <splash src="resources/android/splash/drawable-port-xhdpi-screen.png" density="port-xhdpi"/>
-    <splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
-    <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
+  <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
 </widget>

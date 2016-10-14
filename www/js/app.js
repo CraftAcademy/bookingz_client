@@ -9,11 +9,11 @@ var bookingzClient = angular.module('bookingz',
     'bookingz.services',
     'ngResource',
     'emguo.poller',
-    'ionic.wizard',
     'ngStorage'])
 
-  //.constant('API_URL', 'http://localhost:3000')
-  .constant('API_URL', 'https://bookingz.herokuapp.com')
+  .constant('APP_VERSION', '0.1.0-alpha')
+  //.constant('API_URL', 'https://bookingz.herokuapp.com')
+  .constant('API_URL', 'https://komboxrum.herokuapp.com')
   .run(function ($ionicPlatform, $rootScope) {
     $ionicPlatform.ready(function () {
       if (window.cordova) {
@@ -46,21 +46,7 @@ var bookingzClient = angular.module('bookingz',
   })
 
   .config(function ($stateProvider, $urlRouterProvider) {
-
-
-
-    //console.log(localStorage.getItem('ngStorage-myAppRun'));
-    // set default route to wizard
-    //var defaultRoute = '/welcome';
     var defaultRoute = '/display';
-
-
-    // check whether wizard has been run in order to change default route
-    // we cannot inject ngStorage dependency in a config module, so we need to use plain localStorage object
-    if (localStorage.getItem('ngStorage-myAppRun') == 'true') {
-      // Setup view has been run
-      defaultRoute = '/display';
-    }
 
     $stateProvider
       .state('display', {
@@ -73,18 +59,6 @@ var bookingzClient = angular.module('bookingz',
         url: '/info-board',
         templateUrl: 'templates/info-board.html',
         controller: 'IndexController'
-      })
-    //.state('welcome', {
-    //  url: '/welcome',
-    //  templateUrl: 'templates/welcome.html',
-    //  controller: 'setupController'
-    //})
-    //
-    //.state('login', {
-    //  url: '/login',
-    //  templateUrl: 'templates/login.html',
-    //  controller: 'setupController'
-    //});
-// if none of the above states are matched, use this as the fallback
+      });
     $urlRouterProvider.otherwise(defaultRoute);
   });

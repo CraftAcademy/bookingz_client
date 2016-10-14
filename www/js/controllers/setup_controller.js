@@ -9,9 +9,11 @@ bookingzClient.controller('setupController', function ($scope,
                                                        $ionicModal,
                                                        $ionicLoading,
                                                        $cordovaDevice,
-                                                       $window) {
+                                                       $window,
+                                                       APP_VERSION) {
   $scope.data = {};
   $scope.loginData = {};
+  $scope.version = APP_VERSION;
 
   if ($localStorage.myAppData.resource) {
     $scope.resource = $localStorage.myAppData.resource;
@@ -98,19 +100,20 @@ bookingzClient.controller('setupController', function ($scope,
     };
     if (action == 'create') {
       bookingzService.post(resourceOptions, function () {
-          $scope.hideLoading();
-          $scope.closeSetupModal();
-          $localStorage.myAppRun = true;
-          storageService.add(resourceOptions);
-          $window.location.reload(true)
+        storageService.add(resourceOptions);
+        $localStorage.myAppRun = true;
+        $scope.closeSetupModal();
+        $window.location.reload(true);
+        $scope.hideLoading();
+
         }
       );
     } else {
       bookingzService.put({uuid: uuid, resource: resourceOptions.resource}, function () {
-          $scope.hideLoading();
-          $scope.closeSetupModal();
           storageService.add(resourceOptions);
-          $window.location.reload(true)
+          $scope.closeSetupModal();
+          $window.location.reload(true);
+          $scope.hideLoading();
         }
       );
 
@@ -119,7 +122,7 @@ bookingzClient.controller('setupController', function ($scope,
 
   };
 
-  $scope.removeSettings = function () {
+  $scope.manageSettings = function () {
     $localStorage.myAppRun = false;
     console.log($localStorage.myAppData);
     $scope.openLoginModal();
