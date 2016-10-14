@@ -99,24 +99,24 @@ bookingzClient.controller('setupController', function ($scope,
       }
     };
     if (action == 'create') {
-      bookingzService.post(resourceOptions, function () {
-        storageService.add(resourceOptions);
-        $localStorage.myAppRun = true;
-        $scope.closeSetupModal();
-        $window.location.reload(true);
-        $scope.hideLoading();
+      bookingzService.post(resourceOptions).$promise.then(function () {
+          storageService.add(resourceOptions);
+          $localStorage.myAppRun = true;
+          $scope.closeSetupModal();
+          $window.location.reload(true);
+          $scope.hideLoading();
 
         }
       );
     } else {
-      bookingzService.put({uuid: uuid, resource: resourceOptions.resource}, function () {
+      bookingzService.put({uuid: uuid, resource: resourceOptions.resource})
+        .$promise.then(function (data) {
           storageService.add(resourceOptions);
           $scope.closeSetupModal();
           $window.location.reload(true);
           $scope.hideLoading();
         }
       );
-
     }
 
 
