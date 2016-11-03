@@ -2,7 +2,6 @@
   <ion-view view-title="My Page">
     <ion-content ng-class="state == 'booked' ? 'booked' : 'free'" class="dashboard">
       <div ng-if="hasResource != false" >
-        <h2 class="white">{{date | date:'EEEE yyyy-MM-dd'}} - {{resource.designation}}</h2>
         <div class="details" ng-if="state == 'booked'">
           <h1 class="white client">{{meeting.client}}</h1>
           <h3 class="white time">Mötet startar: {{meeting.booking_time.split(' - ')[0]}}</h3>
