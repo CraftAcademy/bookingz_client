@@ -18,12 +18,9 @@ Fork and clone the repository
 ```
 run:
 ```
-$ npm install
+$ npm install && bower install
 ```
-and then:
-```
-$ bower install
-```
+
 After installation, fire up the ionic server and run the app:
 
 ```
