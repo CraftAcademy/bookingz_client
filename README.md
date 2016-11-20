@@ -1,4 +1,4 @@
-# Bookingz Client
+# Bookingz Client [![Code Climate](https://codeclimate.com/github/CraftAcademy/bookingz_client/badges/gpa.svg)](https://codeclimate.com/github/CraftAcademy/bookingz_client)
 The mobile part of the [Bookingz](https://github.com/CraftAcademy/bookingz) project.
 An Android application that displays who has booked the conference room and the time.
 The tablet running the app is to be placed outside the room
