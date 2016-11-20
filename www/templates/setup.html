@@ -15,6 +15,10 @@
   <ion-content>
     <div class="list">
       <label class="item item-input item-stacked-label">
+        <span class="input-label">Facility Code</span>
+        <input type="text" placeholder="The code for this facility (provided by the main administrator)" ng-model="data.f_code" ng-init="data.f_code = resource.f_code">
+      </label>
+      <label class="item item-input item-stacked-label">
         <span class="input-label">Designation</span>
         <input type="text" placeholder="Room name" ng-model="data.designation" ng-init="data.designation = resource.designation">
       </label>

@@ -24,9 +24,8 @@ and then:
 ```
 $ bower install
 ```
-after installation, fire up the ionic server and checkout the app:
+After installation, fire up the ionic server and run the app:
 
-Note the spelling(it IS supposed to be `serve`)
 ```
 $ ionic serve
 ```
@@ -43,7 +42,7 @@ $ ionic run android
 ```
 For more information check out [Ionic](http://ionicframework.com/docs/guide/testing.html)'s docs.
 
-## Built With
+## Technologies
 
 * Ionic v1.7.16
 * JavaScript
@@ -54,13 +53,17 @@ For more information check out [Ionic](http://ionicframework.com/docs/guide/test
 
 
 ## Authors
+Built by Craft Academy August 2016 cohort during the final project weeks.
 
-* [Thomas](https://github.com/tochman)
-* [Raoul](https://github.com/diraulo)
 * [Lucia](https://github.com/luciademoja)
 * [Lara](https://github.com/lollypop27)
 * [Calle](https://github.com/callea2)
 * [Mikael](https://github.com/MikaelFeher)
+
+With enhancements made by [Craft Academy Labs](https://labs.craftacademy.se)
+
+* [Thomas](https://github.com/tochman)
+* [Raoul](https://github.com/diraulo)
 
 ## License
 

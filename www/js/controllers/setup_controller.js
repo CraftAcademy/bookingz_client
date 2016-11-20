@@ -35,7 +35,7 @@ bookingzClient.controller('setupController', function ($scope,
     $scope.loginModal = modal;
   });
 
-  $ionicModal.fromTemplateUrl('templates/welcome.html', {
+  $ionicModal.fromTemplateUrl('templates/setup.html', {
     scope: $scope,
     focusFirstInput: true
   }).then(function (modal) {
@@ -93,6 +93,7 @@ bookingzClient.controller('setupController', function ($scope,
     var resourceOptions = {
       resource: {
         uuid: uuid,
+        f_code: $scope.data.f_code,
         designation: $scope.data.designation,
         description: $scope.data.description,
         capacity: parseInt($scope.data.capacity)
