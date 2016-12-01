@@ -9,7 +9,7 @@ bookingzClient.controller('DisplayController', function ($scope,
 
   $scope.$on('noResource', function(){
     $scope.hasResource = false;
-    $scope.noResourceMessage = 'There is no resource';
+    $scope.noResourceMessage = 'Den här enheten är inte fonfigurerad.';
   });
 
   $scope.$on('resourcePresent', function(){

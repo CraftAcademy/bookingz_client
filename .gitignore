@@ -11,3 +11,4 @@ plugins/
 www/lib
 phantomjsdriver.log
 
+my-release-key.keystore
