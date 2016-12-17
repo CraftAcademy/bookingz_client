@@ -2,9 +2,11 @@
   <ion-view view-title="My Page">
     <ion-content ng-class="state == 'booked' ? 'booked' : 'free'" class="dashboard">
       <div ng-if="hasResource != false" >
-        <h2 class="white">{{date | date:'EEEE yyyy-MM-dd'}} - {{resource.designation}}</h2>
+        <h2 class="white">{{resource.designation}}</h2>
+        <h3 class="white">{{date | date:'EEEE yyyy-MM-dd'}}</h3>
+
         <div class="details" ng-if="state == 'booked'">
-          <h1 class="white client">{{meeting.client}}</h1>
+          <h1 class="white client" ng-class="(meeting.client.length > 25) ? 'client-lg' : 'client-sm'">{{meeting.client}}</h1>
           <h3 class="white time">Mötet startar: {{meeting.booking_time.split(' - ')[0]}}</h3>
           <h3 class="white time">Mötet slutar: {{meeting.booking_time.split(' - ')[1]}}</h3>
         </div>

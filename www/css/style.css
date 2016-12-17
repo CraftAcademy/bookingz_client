@@ -16,12 +16,21 @@
 }
 
 .client {
-  font-size: 5.5rem;
+  font-size: 48px;
+}
+
+.client-sm {
+  font-size: 7vw;
+}
+
+.client-lg {
+  font-size: 4vw;
 }
 
 .details {
-  margin-top: 10rem;
-  margin-left: 11rem;
+  margin: auto;
+  margin-top: 3rem;
+  width: 90%;
 }
 
 .time {
