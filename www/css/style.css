@@ -79,4 +79,9 @@ h1, h2, h3 .grey {
   background: black !important;
 }
 
-
+.card-custom {
+  bottom: 0px;
+  margin: 20px 30px;
+  position: absolute;
+  width: 80%;
+}

@@ -9,15 +9,25 @@
           <h1 class="white client" ng-class="(meeting.client.length > 25) ? 'client-lg' : 'client-sm'">{{meeting.client}}</h1>
           <h3 class="white time">Mötet startar: {{meeting.booking_time.split(' - ')[0]}}</h3>
           <h3 class="white time">Mötet slutar: {{meeting.booking_time.split(' - ')[1]}}</h3>
+
         </div>
+
         <div class="details" ng-if="state != 'booked'">
           <h1 class="white client">No booking...</h1>
         </div>
+
+        <div class="card card-custom" ng-if="state == 'booked'">
+          <div class="item item-text-wrap">
+            This is a basic Card which contains an item that has wrapping text.
+          </div>
+        </div>
       </div>
+
       <div ng-if="hasResource == false" class="free">
         <h2 class="white">{{noResourceMessage}}</h2>
       </div>
     </ion-content>
+
 
     <ion-footer-bar align-title="left" ng-class="state == 'booked' ? 'booked' : 'free'">
       <div class="buttons">
