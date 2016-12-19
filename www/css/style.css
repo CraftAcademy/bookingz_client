@@ -80,8 +80,9 @@ h1, h2, h3 .grey {
 }
 
 .card-custom {
-  bottom: 0px;
-  margin: 20px 30px;
+  bottom: -30px;
+  margin: 20px 0 30px 0;
+  height: 150px;
   position: absolute;
-  width: 80%;
+  width: 100%;
 }

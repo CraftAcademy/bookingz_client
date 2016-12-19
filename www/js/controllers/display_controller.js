@@ -9,7 +9,7 @@ bookingzClient.controller('DisplayController', function ($scope,
 
   $scope.$on('noResource', function(){
     $scope.hasResource = false;
-    $scope.noResourceMessage = 'Den här enheten är inte fonfigurerad.';
+    $scope.noResourceMessage = 'Den här enheten är inte konfigurerad.';
   });
 
   $scope.$on('resourcePresent', function(){
@@ -28,7 +28,7 @@ bookingzClient.controller('DisplayController', function ($scope,
 
   var poll = poller.get(bookingzService,
     {
-      delay: 20000,
+      delay: 30000,
       smart: true
     }
   );
@@ -50,6 +50,7 @@ bookingzClient.controller('DisplayController', function ($scope,
   }
 
   function getSlotInfo(data) {
+    console.log(data);
     var date = new Date();
     var currentDateTime = Date.parse(date.toString());
     angular.forEach(data.slots, function (slot) {

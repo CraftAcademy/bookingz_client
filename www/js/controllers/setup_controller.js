@@ -43,7 +43,7 @@ bookingzClient.controller('setupController', function ($scope,
   });
 
   $scope.$on('modal.shown', function () {
-    console.log('Modal is shown!');
+    //console.log('Modal is shown!');
     $scope.log_pattern = loginService.getLoginPattern();
 
 
@@ -125,7 +125,7 @@ bookingzClient.controller('setupController', function ($scope,
 
   $scope.manageSettings = function () {
     $localStorage.myAppRun = false;
-    console.log($localStorage.myAppData);
+    //console.log($localStorage.myAppData);
     $scope.openLoginModal();
   };
 
@@ -134,7 +134,7 @@ bookingzClient.controller('setupController', function ($scope,
     var password = $scope.loginData.password || password;
     loginService.loginUser(name, password).success(function (data) {
       $rootScope.currentUser.userName = data.userName;
-      console.log($rootScope.currentUser.userName);
+      //console.log($rootScope.currentUser.userName);
       $scope.currentUser = $rootScope.currentUser;
       return;
     }).error(function (data) {
@@ -150,7 +150,7 @@ bookingzClient.controller('setupController', function ($scope,
   };
 
   $scope.openLoginModal = function () {
-    console.log($scope.lock);
+    //console.log($scope.lock);
     $scope.loginModal.show();
   };
 
@@ -160,7 +160,7 @@ bookingzClient.controller('setupController', function ($scope,
   };
 
   $scope.openSetupModal = function () {
-    console.log($scope.lock);
+    //console.log($scope.lock);
     $scope.setupModal.show();
   };
 

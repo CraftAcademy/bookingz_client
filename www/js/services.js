@@ -77,7 +77,7 @@ angular.module('bookingz.services', [])
         return promise;
       },
       getLoginPattern: function () {
-        console.log($localStorage);
+        //console.log($localStorage);
         return $localStorage.login_pattern;
       },
       setLoginPattern: function (pattern) {
