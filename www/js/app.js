@@ -9,14 +9,16 @@ var bookingzClient = angular.module('bookingz',
     'bookingz.services',
     'ngResource',
     'emguo.poller',
-    'ngStorage'])
+    'ngStorage',
+    'angularMoment'])
 
   .constant('APP_VERSION', '0.1.2-alpha')
   //.constant('API_URL', 'https://bookingz.herokuapp.com')
   .constant('API_URL', 'https://komboxrum.herokuapp.com')
   // .constant('API_URL', 'http://localhost:3000')
 
-  .run(function ($ionicPlatform, $rootScope) {
+  .run(function ($ionicPlatform, $rootScope, amMoment) {
+    amMoment.changeLocale('sv');
     $ionicPlatform.ready(function () {
       if (window.cordova) {
         window.plugins.insomnia.keepAwake();
