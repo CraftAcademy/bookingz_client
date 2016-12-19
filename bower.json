@@ -10,7 +10,8 @@
     "ngCordova": "^0.1.27-alpha",
     "ionic-wizard": "^2.0.1",
     "ngstorage": "^0.3.11",
-    "jquery": "^3.1.1"
+    "jquery": "^3.1.1",
+    "angular-moment": "^1.0.1"
   },
   "resolutions": {
     "angular": "1.6.0"
