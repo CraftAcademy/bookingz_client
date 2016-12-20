@@ -12,7 +12,7 @@ var bookingzClient = angular.module('bookingz',
     'ngStorage',
     'angularMoment'])
 
-  .constant('APP_VERSION', '0.1.2-alpha')
+  .constant('APP_VERSION', '0.1.3-alpha')
   //.constant('API_URL', 'https://bookingz.herokuapp.com')
   .constant('API_URL', 'https://komboxrum.herokuapp.com')
   // .constant('API_URL', 'http://localhost:3000')
