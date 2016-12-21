@@ -10,7 +10,7 @@ describe('Open app', function () {
 
   it('should display no resource message', function () {
     var message = element(by.binding('noResourceMessage'))
-    expect(message.getText()).toEqual('Den här enheten är inte konfigurerad.');
+    expect(message.getText()).toEqual('Den här enheten är inte konfigurerad');
   });
 
 });
