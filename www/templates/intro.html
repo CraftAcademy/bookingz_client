@@ -8,7 +8,7 @@
         </div>
 
         <div class="details" ng-if="state == 'booked'">
-          <h1 class="white client" ng-class="(meeting.client.length > 25) ? 'client-lg' : 'client-sm'">{{meeting.client}}</h1>
+          <h1 class="white client" ng-class="(meeting.client.length > 22) ? 'client-lg' : 'client-sm'">{{meeting.client}}</h1>
           <h3 class="white time">Mötet startar: {{meeting.booking_time.split(' - ')[0]}}</h3>
           <h3 class="white time">Mötet slutar: {{meeting.booking_time.split(' - ')[1]}}</h3>
 
