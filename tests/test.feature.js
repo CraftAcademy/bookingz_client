@@ -6,7 +6,11 @@ describe('Open app', function () {
 
   it('should be on /display path', function () {
     expect(browser.getLocationAbsUrl()).toMatch('/display');
-    //expect(browser.getTitle()).toEqual('Starter');
+  });
+
+  it('should display no resource message', function () {
+    var message = element(by.binding('noResourceMessage'))
+    expect(message.getText()).toEqual('Den här enheten är inte konfigurerad.');
   });
 
 });

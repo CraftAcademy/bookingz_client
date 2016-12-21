@@ -10,7 +10,7 @@ exports.config = {
   ],
 
   jasmineNodeOpts: {
-    isVerbose: true,
+    isVerbose: false,
     print: function() {}
   },
 
