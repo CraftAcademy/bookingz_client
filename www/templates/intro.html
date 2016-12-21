@@ -2,8 +2,10 @@
   <ion-view>
     <ion-content ng-class="state == 'booked' ? 'booked' : 'free'" class="dashboard">
       <div ng-if="hasResource != false" >
-        <h2 class="white">{{resource.designation}}</h2>
-        <h3 class="white">{{date | amDateFormat:'dddd YYYY-MM-DD'}}</h3>
+        <div style="height: 100px;">
+          <h2 ng-if="SHOW_RESOURCE_NAME === 'true'" class="white">{{resource.designation}}</h2>
+          <h3 ng-if="SHOW_DATE === 'true'" class="white">{{date | amDateFormat:'dddd YYYY-MM-DD'}}</h3>
+        </div>
 
         <div class="details" ng-if="state == 'booked'">
           <h1 class="white client" ng-class="(meeting.client.length > 25) ? 'client-lg' : 'client-sm'">{{meeting.client}}</h1>

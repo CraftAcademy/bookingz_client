@@ -6,16 +6,12 @@
 var bookingzClient = angular.module('bookingz',
   ['ionic',
     'ngCordova',
+    'bookingz.constants',
     'bookingz.services',
     'ngResource',
     'emguo.poller',
     'ngStorage',
     'angularMoment'])
-
-  .constant('APP_VERSION', '0.1.2-alpha')
-  //.constant('API_URL', 'https://bookingz.herokuapp.com')
-  .constant('API_URL', 'https://komboxrum.herokuapp.com')
-  // .constant('API_URL', 'http://localhost:3000')
 
   .run(function ($ionicPlatform, $rootScope, amMoment) {
     amMoment.changeLocale('sv');
