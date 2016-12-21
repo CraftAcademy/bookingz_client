@@ -1,5 +1,5 @@
 angular.module('bookingz.constants', [])
-  .constant('APP_VERSION', '0.1.2-alpha')
+  .constant('APP_VERSION', '0.0.5')
   .constant('API_URL_STAGING', 'https://cal-bookingz.herokuapp.com')
   .constant('API_URL', 'https://komboxrum.herokuapp.com')
   .constant('API_URL_DEVELOP', 'http://localhost:3000')
