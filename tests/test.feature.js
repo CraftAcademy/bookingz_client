@@ -15,6 +15,12 @@ describe('Configuring the app', function () {
 
   it('should display resource info after set up', function () {
     element(by.css('button[ng-click="manageSettings()"]')).click().then(function(){
+      browser.executeScript("window.localStorage.clear();");
+      browser.executeScript('window.localStorage.setItem("ngStorage-login_pattern","\"1,2,6,3,4\"");');
+      browser.executeScript(function(){
+        var pattern = loginService.getLoginPattern();
+        console.log(pattern);
+      });
       element(by.model('data.f_code')).sendKeys('y1xc');
       element(by.model('data.designation')).sendKeys('Feature Test');
       element(by.model('data.description')).sendKeys('Test resource');
