@@ -1,10 +1,10 @@
 <ion-nav-view>
   <ion-view>
     <ion-content ng-class="state == 'booked' ? 'booked' : 'free'" class="dashboard">
-      <div ng-if="hasResource != false" >
+      <div ng-if="hasResource" >
         <div style="height: 100px;">
-          <h2 ng-if="SHOW_RESOURCE_NAME === 'true'" class="white">{{resource.designation}}</h2>
-          <h3 ng-if="SHOW_DATE === 'true'" class="white">{{date | amDateFormat:'dddd YYYY-MM-DD'}}</h3>
+          <h2 ng-if="showResourceName" class="white">{{resource.designation}}</h2>
+          <h3 ng-if="showDate" class="white">{{date | amDateFormat:'dddd YYYY-MM-DD'}}</h3>
         </div>
 
         <div class="details" ng-if="state == 'booked'">
@@ -23,7 +23,7 @@
         </div>
       </div>
 
-      <div ng-if="hasResource == false" class="free">
+      <div ng-if="hasResource" class="free">
         <h2 class="white">{{noResourceMessage}}</h2>
       </div>
     </ion-content>
