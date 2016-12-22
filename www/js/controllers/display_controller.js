@@ -3,9 +3,13 @@ bookingzClient.controller('DisplayController', function ($scope,
                                                          bookingzService,
                                                          poller,
                                                          $localStorage,
-                                                         storageService) {
+                                                         storageService,
+                                                         SHOW_DATE,
+                                                         SHOW_RESOURCE_NAME) {
 
   $scope.hasResource = false;
+  $scope.showDate = SHOW_DATE;
+  $scope.showResourceName = SHOW_RESOURCE_NAME;
 
   $scope.$on('noResource', function(){
     $scope.hasResource = false;
