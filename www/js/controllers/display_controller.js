@@ -41,6 +41,8 @@ bookingzClient.controller('DisplayController', function ($scope,
     if ($scope.hasResource) {
       $scope.date = Date.now();
       $scope.uuid = getStoredUuid();
+      $scope.f_code = getStoredFCode();
+      console.log($scope.f_code);
 
       bookingzService.query({uuid: $scope.uuid}, function (data) {
         getSlotInfo(data);
@@ -51,6 +53,11 @@ bookingzClient.controller('DisplayController', function ($scope,
   function getStoredUuid() {
     var resource = storageService.getAll().resource;
     return resource.uuid;
+  }
+
+  function getStoredFCode() {
+    var resource = storageService.getAll().resource;
+    return resource.f_code;
   }
 
   function getSlotInfo(data) {
