@@ -5,7 +5,8 @@ bookingzClient.controller('DisplayController', function ($scope,
                                                          $localStorage,
                                                          storageService,
                                                          SHOW_DATE,
-                                                         SHOW_RESOURCE_NAME) {
+                                                         SHOW_RESOURCE_NAME,
+                                                         ActionCableChannel) {
 
   $scope.hasResource = false;
   $scope.showDate = SHOW_DATE;
@@ -43,12 +44,24 @@ bookingzClient.controller('DisplayController', function ($scope,
       $scope.uuid = getStoredUuid();
       $scope.f_code = getStoredFCode();
       console.log($scope.f_code);
+      subscribeToChannel($scope, ActionCableChannel);
 
       bookingzService.query({uuid: $scope.uuid}, function (data) {
         getSlotInfo(data);
       });
     }
   });
+
+  function subscribeToChannel($scope, ActionCableChannel) {
+    $scope.noteText = "";
+
+    // connect to ActionCable
+    var consumer = new ActionCableChannel("NoteChannel", {facility_id: 1});
+    var callback = function(note){ $scope.noteText = note; };
+    consumer.subscribe(callback).then(function(){
+      console.log($scope.noteText);
+      });
+  }
 
   function getStoredUuid() {
     var resource = storageService.getAll().resource;

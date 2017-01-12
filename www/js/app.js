@@ -11,7 +11,8 @@ var bookingzClient = angular.module('bookingz',
     'ngResource',
     'emguo.poller',
     'ngStorage',
-    'angularMoment'])
+    'angularMoment',
+    'ngActionCable'])
 
   .run(function ($ionicPlatform, $rootScope, amMoment) {
     amMoment.changeLocale('sv');
@@ -41,6 +42,11 @@ var bookingzClient = angular.module('bookingz',
     });
 
   })
+  // .run(function (ActionCableConfig) {
+  //   ActionCableConfig.wsUri = "wss://localhost:3000/cable";
+  //   ActionCableConfig.autoStart = true;
+  // })
+
   .config(function($ionicConfigProvider){
     $ionicConfigProvider.scrolling.jsScrolling(false);
   })
