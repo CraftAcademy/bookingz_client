@@ -58,10 +58,8 @@ bookingzClient.controller('DisplayController', function ($scope,
     var consumer = new ActionCableChannel("NoteChannel", {facility_id: $scope.facilityId});
     var callback = function(data){
       $scope.noteText = data.note;
-      var textBox = angular.element(document.querySelector('.card-custom'));
+      var textBox = angular.element(document.querySelector('.note-text'));
       textBox.text($scope.noteText);
-      console.log($scope.noteText);
-      console.log(textBox);
     };
     consumer.subscribe(callback).then(function(){
       });

@@ -85,4 +85,21 @@ h1, h2, h3 .grey {
   height: 150px;
   position: absolute;
   width: 100%;
+  padding: .5em;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.note-text {
+  height: auto;
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  display: inline;
+  /*margin: auto;*/
+  vertical-align: middle;
+  /*text-align: center;*/
+  /*font-weight: bold;*/
+
+
 }
