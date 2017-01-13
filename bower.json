@@ -16,6 +16,6 @@
     "angular-actioncable": "^1.1.1"
   },
   "resolutions": {
-    "angular": "1.6.0"
+    "angular": "<2.0.0"
   }
 }
