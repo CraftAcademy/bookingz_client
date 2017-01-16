@@ -11,6 +11,7 @@ exports.config = {
 
   jasmineNodeOpts: {
     isVerbose: true,
+    defaultTimeoutInterval: 100000,
     print: function() {}
   },
 
