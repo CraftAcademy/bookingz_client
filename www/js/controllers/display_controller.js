@@ -19,8 +19,9 @@ bookingzClient.controller('DisplayController', function ($scope,
 
   $scope.$on('resourcePresent', function(){
     $scope.hasResource = true;
+    console.log($localStorage.myAppData.resource.f_code);
+    $scope.facilityId = $localStorage.myAppData.resource.f_code;
     poll.promise.then(null, null, function (response) {
-      $scope.facilityId = response.items[0].id;
       response.items.filter(function (resource) {
         if (resource.uuid == $scope.uuid) {
           $scope.resource = resource;
@@ -55,7 +56,7 @@ bookingzClient.controller('DisplayController', function ($scope,
     $scope.noteText = "";
 
     // connect to ActionCable
-    var consumer = new ActionCableChannel("NoteChannel", {facility_id: $scope.facilityId});
+    var consumer = new ActionCableChannel("NoteChannel", {facility_code: $scope.facilityId});
     var callback = function(data){
       $scope.noteText = data.note;
       var textBox = angular.element(document.querySelector('.note-text'));
