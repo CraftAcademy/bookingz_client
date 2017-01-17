@@ -42,11 +42,11 @@ var bookingzClient = angular.module('bookingz',
     });
 
   })
-  // .run(function (ActionCableConfig) {
-  //   ActionCableConfig.wsUri = "wss://bookingz.herokuapp.com/cable";
-  //   ActionCableConfig.autoStart = true;
-  //   ActionCableConfig.debug = true; // Turn off after this is working.
-  // })
+  .run(function (ActionCableConfig) {
+    ActionCableConfig.wsUri = "wss://bookingz.herokuapp.com/cable";
+    ActionCableConfig.autoStart = true;
+    ActionCableConfig.debug = true; // Turn off after this is working.
+  })
 
   .config(function($ionicConfigProvider){
     $ionicConfigProvider.scrolling.jsScrolling(false);
