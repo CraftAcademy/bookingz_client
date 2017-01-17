@@ -1,8 +1,8 @@
 angular.module('bookingz.services', [])
 
-  .factory('bookingzService', function ($resource, API_URL_STAGING) {
+  .factory('bookingzService', function ($resource, API_URL) {
     var headers = {'Accept': 'application/json'};
-    return $resource(API_URL_STAGING + '/api/resources/:uuid', {},
+    return $resource(API_URL + '/api/resources/:uuid', {},
       {
         query: {
           method: 'GET',
@@ -28,7 +28,7 @@ angular.module('bookingz.services', [])
           method: 'PUT',
           headers: {'Accept': 'application/json', 'Content-Type': 'application/json; charset=UTF-8'}
         }
-      })
+      });
 
   })
   .factory('storageService', function ($localStorage) {
@@ -104,7 +104,5 @@ angular.module('bookingz.services', [])
 
         return promise;
       }
-    }
+    };
   });
-
-
