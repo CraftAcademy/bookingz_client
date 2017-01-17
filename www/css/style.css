@@ -24,7 +24,7 @@
 }
 
 .client-lg {
-  font-size: 4.7vw;
+  font-size: 3.7vw;
 }
 
 .details {
@@ -82,11 +82,12 @@ h1, h2, h3 .grey {
 .card-custom {
   bottom: -30px;
   margin: 20px 0 30px 0;
-  height: 150px;
+  min-height: 150px !important;
   position: absolute;
   width: 100%;
   padding: .5em;
   display: table;
+  background-color: white;
 }
 
 .note-text {
