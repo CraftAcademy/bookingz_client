@@ -1,8 +1,8 @@
 angular.module('bookingz.services', [])
 
-  .factory('bookingzService', function ($resource, API_URL) {
+  .factory('bookingzService', function ($resource, API_URL_STAGING) {
     var headers = {'Accept': 'application/json'};
-    return $resource(API_URL + '/api/resources/:uuid', {},
+    return $resource(API_URL_STAGING + '/api/resources/:uuid', {},
       {
         query: {
           method: 'GET',

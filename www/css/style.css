@@ -85,4 +85,14 @@ h1, h2, h3 .grey {
   height: 150px;
   position: absolute;
   width: 100%;
+  padding: .5em;
+  display: table;
+}
+
+.note-text {
+  display: table-cell;
+  vertical-align: middle;
+  line-height: normal;
+  text-align: center;
+  font-weight: bold;
 }

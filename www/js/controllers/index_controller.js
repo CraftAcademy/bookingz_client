@@ -14,6 +14,7 @@ bookingzClient.controller('IndexController', function ($scope, bookingzService, 
     });
 
     $scope.allBookings = function () {
+      // ask localStorage what the f_code is.
       bookingzService.get({}, function (response) {
         $scope.resourceIndex = response.items;
       })
