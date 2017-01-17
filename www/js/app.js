@@ -42,8 +42,8 @@ var bookingzClient = angular.module('bookingz',
     });
 
   })
-  .run(function (ActionCableConfig) {
-    ActionCableConfig.wsUri = "wss://bookingz.herokuapp.com/cable";
+  .run(function (ActionCableConfig, WS_URL) {
+    ActionCableConfig.wsUri = WS_URL;
     ActionCableConfig.autoStart = true;
     ActionCableConfig.debug = true; // Turn off after this is working.
   })
