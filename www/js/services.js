@@ -28,7 +28,7 @@ angular.module('bookingz.services', [])
           method: 'PUT',
           headers: {'Accept': 'application/json', 'Content-Type': 'application/json; charset=UTF-8'}
         }
-      })
+      });
 
   })
   .factory('storageService', function ($localStorage) {
@@ -104,7 +104,5 @@ angular.module('bookingz.services', [])
 
         return promise;
       }
-    }
+    };
   });
-
-

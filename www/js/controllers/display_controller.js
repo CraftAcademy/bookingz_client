@@ -5,7 +5,8 @@ bookingzClient.controller('DisplayController', function ($scope,
                                                          $localStorage,
                                                          storageService,
                                                          SHOW_DATE,
-                                                         SHOW_RESOURCE_NAME) {
+                                                         SHOW_RESOURCE_NAME,
+                                                         ActionCableChannel) {
 
   $scope.hasResource = false;
   $scope.showDate = SHOW_DATE;
@@ -18,6 +19,8 @@ bookingzClient.controller('DisplayController', function ($scope,
 
   $scope.$on('resourcePresent', function(){
     $scope.hasResource = true;
+    console.log($localStorage.myAppData.resource.f_code);
+    $scope.facilityId = $localStorage.myAppData.resource.f_code;
     poll.promise.then(null, null, function (response) {
       response.items.filter(function (resource) {
         if (resource.uuid == $scope.uuid) {
@@ -41,12 +44,27 @@ bookingzClient.controller('DisplayController', function ($scope,
     if ($scope.hasResource) {
       $scope.date = Date.now();
       $scope.uuid = getStoredUuid();
+      subscribeToChannel($scope, ActionCableChannel);
 
       bookingzService.query({uuid: $scope.uuid}, function (data) {
         getSlotInfo(data);
       });
     }
   });
+
+  function subscribeToChannel($scope, ActionCableChannel) {
+    $scope.noteText = "";
+
+    // connect to ActionCable
+    var consumer = new ActionCableChannel("NoteChannel", {facility_code: $scope.facilityId});
+    var callback = function(data){
+      $scope.noteText = data.note;
+      var textBox = angular.element(document.querySelector('.note-text'));
+      textBox.text($scope.noteText);
+    };
+    consumer.subscribe(callback).then(function(){
+      });
+  }
 
   function getStoredUuid() {
     var resource = storageService.getAll().resource;
