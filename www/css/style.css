@@ -81,7 +81,7 @@ h1, h2, h3 .grey {
 .card-custom {
   bottom: -30px;
   margin: 20px 0 30px 0;
-  min-height: 150px !important;
+  min-height: 150px;
   position: absolute;
   width: 100%;
   padding: .5em;
