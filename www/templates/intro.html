@@ -1,14 +1,16 @@
 <ion-nav-view>
   <ion-view>
     <ion-content ng-class="state == 'booked' ? 'booked' : 'free'" class="dashboard">
-      <div ng-if="hasResource" >
-        <div style="height: 100px;">
+      <div ng-if="hasResource">
+        <div style="height: 50px;">
           <h2 ng-if="showResourceName" class="white">{{resource.designation}}</h2>
           <h3 ng-if="showDate" class="white">{{date | amDateFormat:'dddd YYYY-MM-DD'}}</h3>
         </div>
 
         <div class="details" ng-if="state == 'booked'">
-          <h1 class="white client" ng-class="(meeting.client.length > 22) ? 'client-lg' : 'client-sm'">{{meeting.client}}</h1>
+          <h1 class="white client" ng-class="(meeting.client.length > 22) ? 'client-lg' : 'client-sm'">
+            {{meeting.client}}
+          </h1>
           <h3 class="white time">Mötet startar: {{meeting.booking_time.split(' - ')[0]}}</h3>
           <h3 class="white time">Mötet slutar: {{meeting.booking_time.split(' - ')[1]}}</h3>
 
@@ -18,9 +20,9 @@
           <h1 class="white client">Rummet är ledigt</h1>
         </div>
 
-        <div class="card card-custom client-lg">
+        <div ng-if="noteText" class="card-custom">
           <div class="note-text">
-            <!-- Place notifications here -->
+            {{ noteText }}
           </div>
         </div>
       </div>
