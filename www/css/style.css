@@ -15,16 +15,12 @@
   color: white;
 }
 
-.client {
-  font-size: 48px;
-}
-
 .client-sm {
   font-size: 7vw;
 }
 
 .client-lg {
-  font-size: 3.7vw;
+  font-size: 6vw;
 }
 
 .details {
