@@ -104,6 +104,7 @@ h1, h2, h3 .grey {
 
 .login-modal {
   width: 390px;
+  min-height: 80% !important;
   top: 10% !important;
   left: auto !important;
 }
