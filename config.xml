@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="se.craftacademy.bookingz-mobile-alpha" version="0.0.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="se.craftacademy.bookingz-mobile-alpha" version="0.0.10" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>CA Bookingz</name>
   <description>
-        An Craft Academy Labs Project.
-    </description>
-  <author email="info@craftacademy.se" href="http://labs.craftacademy.se//">
-      Craft Academy Labs
-    </author>
+    A Craft Academy Labs Project.
+  </description>
+  <author email="info@craftacademy.se" href="https://craftacademylabs.com">
+    Craft Academy Labs
+  </author>
   <content src="index.html"/>
   <access origin="*"/>
   <allow-intent href="*"/>
