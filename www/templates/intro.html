@@ -17,7 +17,7 @@
         </div>
 
         <div class="details" ng-if="state != 'booked'">
-          <h1 class="white client">Rummet är ledigt</h1>
+          <h1 class="white client client-lg">Rummet är ledigt</h1>
         </div>
 
         <div ng-if="noteText" class="card-custom">
@@ -28,7 +28,7 @@
       </div>
 
       <div ng-if="!hasResource" class="free">
-        <h2 class="white">{{noResourceMessage}}</h2>
+        <h2 class="white client">{{noResourceMessage}}</h2>
       </div>
     </ion-content>
 
