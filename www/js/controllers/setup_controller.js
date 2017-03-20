@@ -50,7 +50,7 @@ bookingzClient.controller('setupController', function ($scope,
     $scope.lock = new PatternLock('#lockPattern', {
       radius: 30,
       margin: 15,
-      matrix: [3, 4],
+      matrix: [4, 4],
       onDraw: function (pattern) {
         if ($scope.log_pattern) {
           loginService.checkLoginPattern(pattern).success(function (data) {
