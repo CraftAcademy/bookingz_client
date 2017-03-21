@@ -1,5 +1,5 @@
 angular.module('bookingz.constants', [])
-  .constant('APP_VERSION', '0.0.10')
+  .constant('APP_VERSION', '0.0.12')
   .constant('API_URL_STAGING', 'https://bookingz.herokuapp.com')
   .constant('API_URL', 'https://bookingz.craftacademylabs.com')
   .constant('API_URL_DEVELOP', 'http://localhost:3000')

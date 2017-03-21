@@ -19,7 +19,7 @@ bookingzClient.controller('DisplayController', function ($scope,
 
   $scope.$on('resourcePresent', function(){
     $scope.hasResource = true;
-    console.log($localStorage.myAppData.resource.f_code);
+    //console.log($localStorage.myAppData.resource.f_code);
     $scope.facilityId = $localStorage.myAppData.resource.f_code;
     poll.promise.then(null, null, function (response) {
       response.items.filter(function (resource) {

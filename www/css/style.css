@@ -1,4 +1,16 @@
 /* Empty. Add your own CSS if you like */
+
+@font-face {
+  font-family: "Gotham Light";
+  src: url(fonts/GOTHAM-LIGHT.TTF);
+}
+
+h1, h2, h3, div {
+  font-family: "Gotham Light" !important;
+  font-weight: bold;
+}
+
+
 .dashboard {
   padding: 1em 1em 1em 1em;
 }
@@ -16,11 +28,11 @@
 }
 
 .client-sm {
-  font-size: 7vw;
+  font-size: 9vw;
 }
 
 .client-lg {
-  font-size: 6vw;
+  font-size: 6.5vw;
 }
 
 .details {
@@ -83,6 +95,7 @@ h1, h2, h3 .grey {
   padding: .5em;
   display: table;
   background-color: white;
+  opacity: 0.95;
 }
 
 .note-text {
