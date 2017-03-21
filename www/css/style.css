@@ -99,12 +99,11 @@ h1, h2, h3 .grey {
 }
 
 .note-text {
-  font-size: 32px;
+  font-size: 30px;
   display: table-cell;
   vertical-align: middle;
-  line-height: normal;
+  line-height: 1.2;
   text-align: center;
-  font-weight: bold;
 }
 
 .custom-modal {
