@@ -16,11 +16,11 @@ h1, h2, h3, div {
 }
 
 .booked {
-  background-color: #e0157e;
+  background-color: #FF0000;
 }
 
 .free {
-  background-color: darkgreen;
+  background-color: #4c9900;
 }
 
 .white {
@@ -87,7 +87,8 @@ h1, h2, h3 .grey {
 }
 
 .card-custom {
-  bottom: 10%;
+  bottom: 15px;
+  position: absolute;
   margin: 20px 0 30px 0;
   min-height: 150px;
   width: 100%;
@@ -95,6 +96,10 @@ h1, h2, h3 .grey {
   display: table;
   background-color: white;
   opacity: 0.95;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #606060;
+
 }
 
 .note-text {
