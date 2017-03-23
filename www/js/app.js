@@ -22,6 +22,9 @@ var bookingzClient = angular.module('bookingz',
       }
 
       if (window.cordova && window.cordova.plugins.Keyboard) {
+        // Enable Autostart
+        cordova.plugins.autoStart.enable();
+
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
         cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
