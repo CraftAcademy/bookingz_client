@@ -5,5 +5,6 @@ angular.module('bookingz.constants', [])
   .constant('API_URL_DEVELOP', 'http://localhost:3000')
   .constant('WS_URL_STAGING', 'wss://bookingz.herokuapp.com/cable')
   .constant('WS_URL', 'wss://bookingz.craftacademylabs.com/cable')
-  .constant('SHOW_RESOURCE_NAME', false)
-  .constant('SHOW_DATE', false);
+  .constant('SHOW_RESOURCE_NAME', true)
+  .constant('SHOW_LOGO', true)
+  .constant('SHOW_DATE', true);
