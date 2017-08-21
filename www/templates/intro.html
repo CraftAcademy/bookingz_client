@@ -1,11 +1,14 @@
 <ion-nav-view>
   <ion-view>
     <ion-content ng-class="state == 'booked' ? 'booked' : 'free'" class="dashboard">
+      <div class="text-right" style="position: absolute; right: 0;">
+        <img src="img/bookingz_logo_symbol_inverted_50.png" alt="">
+      </div>
       <div ng-if="hasResource">
         <div style="height: 50px;" ng-if="showResourceName || showDate">
           <h2 ng-if="showResourceName" class="white">{{resource.designation}}</h2>
-          <h3 ng-if="showDate" class="white">{{date | amDateFormat:'dddd YYYY-MM-DD'}}</h3>
         </div>
+
 
         <div class="details" ng-if="state == 'booked'">
           <h3 class="white time">Bokad: {{meeting.booking_time}}</h3>
@@ -35,9 +38,12 @@
 
     <ion-footer-bar align-title="left" ng-class="state == 'booked' ? 'booked' : 'free'">
       <div class="buttons">
-        <button style="background: transparent;color : #111;  border: transparent" class="button ion-gear-b"
+        <button style="background: transparent;color : white;  border: transparent" class="button ion-gear-b"
                 ng-controller="setupController" ng-click="manageSettings()"></button>
+
       </div>
+      <p ng-if="showDate" class="white" style="position: absolute; right: 15px; bottom: 3px;">{{date | amDateFormat:'dddd YYYY-MM-DD'}} </p>
+
     </ion-footer-bar>
   </ion-view>
 </ion-nav-view>
