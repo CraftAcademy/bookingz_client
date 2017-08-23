@@ -17,6 +17,6 @@
     "angular-aria": "1.5.3"
   },
   "resolutions": {
-    "angular": "1.5.3 "
+    "angular": "<2.0.0"
   }
 }
