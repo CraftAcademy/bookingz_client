@@ -22,6 +22,15 @@
 
         <div class="details" ng-if="state != 'booked'">
           <h1 class="white client client-lg">Rummet är ledigt</h1>
+          <div class="center">
+            <button class="button button-large button-light"
+                    style="font-size: 2rem; padding-right: 5rem; padding-left: 5rem; background-color: white; opacity: 0.95;"
+                    ng-controller="BookingController"
+                    ng-click="bookNow(resource)">Använd nu
+            </button>
+
+          </div>
+
         </div>
 
         <div ng-if="noteText" class="card-custom">
@@ -42,7 +51,8 @@
                 ng-controller="setupController" ng-click="manageSettings()"></button>
 
       </div>
-      <p ng-if="showDate" class="white" style="position: absolute; right: 15px; bottom: 3px;">{{date | amDateFormat:'dddd YYYY-MM-DD'}} </p>
+      <p ng-if="showDate" class="white" style="position: absolute; right: 15px; bottom: 3px;">{{date |
+        amDateFormat:'dddd YYYY-MM-DD'}} </p>
 
     </ion-footer-bar>
   </ion-view>
