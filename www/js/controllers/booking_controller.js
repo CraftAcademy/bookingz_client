@@ -27,7 +27,7 @@ bookingzClient.controller('BookingController',
         var data = {
           time_start: start,
           time_end: end,
-          client: 'Ad Hoc Booking'
+          client: 'Rummet är bokat'
         };
 
         var config = {
@@ -38,10 +38,11 @@ bookingzClient.controller('BookingController',
 
         $http.post(API_URL_DEVELOP + `/api/resources/${resource.uuid}/create_booking`, data, config)
           .success(function (data) {
+            console.log(data);
             location.reload();
           })
           .error(function (data) {
-            debugger;
+            console.log(data);
           });
       };
 

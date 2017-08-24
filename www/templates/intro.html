@@ -21,7 +21,7 @@
         </div>
 
         <div class="details" ng-if="state != 'booked'">
-          <h1 class="white client client-lg">Rummet är ledigt</h1>
+          <h1 class="white client client-sm">Rummet är ledigt</h1>
           <div class="center">
             <button class="button button-large button-light"
                     style="font-size: 2rem; padding-right: 5rem; padding-left: 5rem; background-color: white; opacity: 0.95;"
@@ -49,11 +49,11 @@
       <div class="buttons">
         <button style="background: transparent;color : white;  border: transparent" class="button ion-gear-b"
                 ng-controller="setupController" ng-click="manageSettings()"></button>
-
+        <p class="white" style="position: absolute; left: 35px; bottom: 1px; font-weight: 200;">
+          Besök <span style="font-weight: bold;"> bookingz.craftacademylabs.se </span> för att boka dettaa rum.</p>
       </div>
-      <p ng-if="showDate" class="white" style="position: absolute; right: 15px; bottom: 3px;">{{date |
+      <p ng-if="showDate" class="white" style="position: absolute; right: 15px; bottom: 3px; font-weight: 200;">{{date |
         amDateFormat:'dddd YYYY-MM-DD'}} </p>
-
     </ion-footer-bar>
   </ion-view>
 </ion-nav-view>

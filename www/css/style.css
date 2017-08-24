@@ -28,11 +28,11 @@ h1, h2, h3, div {
 }
 
 .client-sm {
-  font-size: 9vw;
+  font-size:7vw;
 }
 
 .client-lg {
-  font-size: 6.5vw;
+  font-size: 6vw;
 }
 
 .details {

@@ -84,16 +84,18 @@ bookingzClient.controller('DisplayController',
         console.log(data);
         var date = new Date();
         var currentDateTime = Date.parse(date.toString());
-        angular.forEach(data.slots, function (slot) {
-          var bookingTimes = slot.info.time.split(' - ');
-          var startTime = Date.parse([date.toJSON().slice(0, 10), bookingTimes[0]].join(' '));
-          var endTime = Date.parse([date.toJSON().slice(0, 10), bookingTimes[1]].join(' '));
-          if ((currentDateTime > startTime) && (currentDateTime < endTime)) {
-            $scope.state = slot.state;
-            if (slot.state == 'booked') {
-              $scope.meeting = slot.info;
+        if (typeof(data.slots) !== 'undefined') {
+          angular.forEach(data.slots, function (slot) {
+            var bookingTimes = slot.info.time.split(' - ');
+            var startTime = Date.parse([date.toJSON().slice(0, 10), bookingTimes[0]].join(' '));
+            var endTime = Date.parse([date.toJSON().slice(0, 10), bookingTimes[1]].join(' '));
+            if ((currentDateTime > startTime) && (currentDateTime < endTime)) {
+              $scope.state = slot.state;
+              if (slot.state == 'booked') {
+                $scope.meeting = slot.info;
+              }
             }
-          }
-        });
+          });
+        }
       }
     }]);
