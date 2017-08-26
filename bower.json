@@ -2,10 +2,10 @@
   "name": "bookingz-client",
   "private": "true",
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.3.1",
-    "angular-resource": "^1.5.8"
+    "ionic": "driftyco/ionic-bower#1.3.1"
   },
   "dependencies": {
+    "angular-resource": "1.5.3",
     "angular-poller": "^0.4.5",
     "ngCordova": "^0.1.27-alpha",
     "ionic-wizard": "^2.0.1",
@@ -13,9 +13,10 @@
     "jquery": "^3.1.1",
     "angular-moment": "^1.0.1",
     "patternLock": "^1.0.1",
-    "angular-actioncable": "^1.1.1"
+    "angular-actioncable": "^1.1.1",
+    "angular-aria": "1.5.3"
   },
   "resolutions": {
-    "angular": "<2.0.0"
+    "angular": "1.5.3 "
   }
 }

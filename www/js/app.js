@@ -38,18 +38,14 @@ var bookingzClient = angular.module('bookingz',
       if (window.StatusBar) {
         StatusBar.styleDefault();
       }
-
-
       $rootScope.currentUser = {userName: 'Test'};
-
-
     });
 
   })
   .run(function (ActionCableConfig, WS_URL) {
     ActionCableConfig.wsUri = WS_URL;
     ActionCableConfig.autoStart = true;
-    ActionCableConfig.debug = true; // Turn off after this is working.
+    ActionCableConfig.debug = false; // Turn off after this is working.
   })
 
   .config(function($ionicConfigProvider){

@@ -28,11 +28,11 @@ h1, h2, h3, div {
 }
 
 .client-sm {
-  font-size: 9vw;
+  font-size:7vw;
 }
 
 .client-lg {
-  font-size: 6.5vw;
+  font-size: 6vw;
 }
 
 .details {
@@ -63,7 +63,7 @@ h1, h2, h3 .grey {
 }
 
 .center {
-  margin-top: -2.5em;
+  margin-top: 1.5em;
   padding-bottom: 0.5em;
   text-align: center;
 }
@@ -123,7 +123,6 @@ h1, h2, h3 .grey {
   bottom: 10% !important;
   max-height: 90% !important;
   min-height: 53% !important;
-
-
   left: auto !important;
 }
+
