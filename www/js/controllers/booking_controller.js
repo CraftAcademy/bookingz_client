@@ -42,6 +42,7 @@ bookingzClient.controller('BookingController',
             location.reload();
           })
           .error(function (data) {
+            $scope.errorMessage = data;
             console.log(data);
           });
       };
